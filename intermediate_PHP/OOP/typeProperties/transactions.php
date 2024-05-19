@@ -13,14 +13,18 @@ class Transaction
     $this->description = $description;
   }
 
-  public function addTax(float $rate)
+  public function addTax(float $rate): Transaction
   {
     $this->amount += $this->amount * $rate / 100;
+
+    return $this;
   }
 
-  public function applyDiscount(float $rate)
+  public function applyDiscount(float $rate): Transaction
   {
     $this->amount -= $this->amount * $rate / 100;
+
+    return $this;
   }
 
   // if the modifier is private, we can use private modifier access within the class to be invoked in the outside of the class
