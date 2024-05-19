@@ -1,6 +1,6 @@
 <?php
 
-require_once('../typeProperties/transactions.php');
+require_once('./transactions.php');
 
 
 $objTransaction1 = (new Transaction(100, '2020-01-01'))
