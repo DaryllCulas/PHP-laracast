@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Paddle;
+namespace PaymentGateway\Paddle;
 
 class CustomerProfile
 {
