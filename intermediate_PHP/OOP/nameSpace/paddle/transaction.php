@@ -14,7 +14,7 @@ class Transaction
   public function __construct()
   {
     // var_dump(new CustomerProfile);
-    // print_r(new \DateTime('now'));
+    // print_r(new \DateTime('now')); ==> Built in PHP-function
     // print_r(new DateTime);
     print_r(new Email);
   }
