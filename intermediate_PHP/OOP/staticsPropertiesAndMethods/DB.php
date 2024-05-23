@@ -8,7 +8,7 @@ class DB
   private static ?DB $instance = null;
 
 
-  public function __construct(public array $config)
+ private function __construct(public array $config)
   {
     echo 'Instance Created' . PHP_EOL;
   }
