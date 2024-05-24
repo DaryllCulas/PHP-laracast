@@ -6,15 +6,22 @@ namespace App\Inheritance;
 
 class Toaster
 {
-  public array $slices = [];
-  public $size = 2;
+  protected array $slices = [];
+  protected int $size = 2;
 
 
-  public function addSlice(string $slice): void
+  public function __construct()
+  {
+    $this->slices = [];
+    $this->size = 2;
+  }
+
+
+  public function addSlice(string $sliceString): void
   {
 
     if (count($this->slices) < $this->size) {
-      $this->slices[] = $slice;
+      $this->slices[] = $sliceString;
     }
   }
 
