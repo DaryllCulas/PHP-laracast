@@ -2,23 +2,24 @@
 
 namespace App\Inheritance;
 
-class ToasterPro
+// This is child class being inherited from
+
+class ToasterPro extends Toaster
 {
-  public array $slices = [];
+
   public int $size = 4;
 
-
-  public function addSlice(string $sliceString): void
+  public function __construct()
   {
-    if (count($this->slices) < $this->size) {
-      $this->slices[] = $sliceString;
-    }
+    parent::__construct();
+    $this->size = 6;
   }
 
-  public function toast()
+
+  public function toastBagel()
   {
     foreach ($this->slices as $i => $slice) {
-      echo ($i + 1) . ": Toasting " . $slice . PHP_EOL;
+      echo ($i + 1) . ": Toasting " . $slice . "with bagels option" . PHP_EOL;
     }
   }
 }
