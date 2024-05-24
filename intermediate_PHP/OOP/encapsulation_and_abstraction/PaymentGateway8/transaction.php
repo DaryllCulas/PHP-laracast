@@ -37,9 +37,7 @@ class Transaction8
   }
   private function sendEmail()
   {
-    if ($this->isEmailSent === 1) {
-      $this->isEmailSentToString = "True";
-    }
+
     return "is email sent? =" . $this->isEmailSentToString;
   }
 }
