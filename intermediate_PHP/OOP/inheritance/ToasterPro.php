@@ -15,11 +15,16 @@ class ToasterPro extends Toaster
     $this->size = 6;
   }
 
+  public function addSlice(string $sliceString): void
+  {
+    parent::addSlice($sliceString);
+  } // Overriding parent method
+
 
   public function toastBagel()
   {
     foreach ($this->slices as $i => $slice) {
-      echo ($i + 1) . ": Toasting " . $slice . "with bagels option" . PHP_EOL;
+      echo ($i + 1) . ": Toasting " . $slice . " with bagels option" . PHP_EOL;
     }
   }
 }
