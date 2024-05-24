@@ -11,7 +11,7 @@ class ToasterPro extends Toaster
 
   public function __construct()
   {
-    parent::__construct();
+    parent::__construct(); // When calling parent class constructor always put here at first
     $this->size = 6;
   }
 
