@@ -3,7 +3,7 @@
 namespace App\PolymorphismInterfaces;
 
 
-class CollectionAgency implements DebtCollector, AnotherInterface
+class CollectionAgency implements DebtCollector
 {
 
   /**
@@ -12,12 +12,11 @@ class CollectionAgency implements DebtCollector, AnotherInterface
    * @return float
    */
 
-  public function __construct()
-  {
-  }
+
 
   public function collect(float $owedAmount): float
   {
-    return $owedAmount;
+    $guaranteed = $owedAmount * 0.5;
+    return mt_rand($guaranteed, $owedAmount);
   }
 }
