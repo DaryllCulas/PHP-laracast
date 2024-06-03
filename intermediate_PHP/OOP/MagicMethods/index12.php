@@ -27,4 +27,5 @@ echo PHP_EOL;
 $invoiceObj2();
 var_dump(is_callable($invoiceObj2));
 echo PHP_EOL;
-print_r($invoiceObj2);
+var_dump($invoiceObj2);
+echo (string) $invoiceObj2;
