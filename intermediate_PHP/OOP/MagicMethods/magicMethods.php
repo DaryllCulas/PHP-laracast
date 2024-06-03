@@ -55,12 +55,13 @@ class Invoice2
   }
   public static function __callStatic(string $name, array $arguments)
   {
-    var_dump('static', $name, $arguments);
+    var_dump('statics', $name, $arguments);
   }
 
   public function __toString(): string
   {
     // return 1;
+
     return 'Hello world';
   }
 
