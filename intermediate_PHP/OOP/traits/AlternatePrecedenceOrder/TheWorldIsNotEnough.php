@@ -1,9 +1,11 @@
 <?php
 
+use AlternatePrecedenceOrder\HelloWorld;
+
 
 class TheWorldIsNotEnough
 {
-  use \AlternatePrecedenceOrder\HelloWorld;
+  use HelloWorld;
   public function sayHello()
   {
     echo 'Hello Universe!';
