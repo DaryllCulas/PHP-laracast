@@ -20,7 +20,9 @@ $coffeeMakerObj->makeCoffee();
 
 $latteMakerObj = new LatteMaker();
 $latteMakerObj->makeLatte();
+$latteMakerObj::mixLatte();
 
+echo PHP_EOL;
 
 $cappucinoMakerObj = new CappucinoMaker();
 $cappucinoMakerObj->makeCappucino();
