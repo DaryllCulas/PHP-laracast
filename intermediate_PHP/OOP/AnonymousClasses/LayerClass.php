@@ -23,6 +23,14 @@ class Outer
         $this->prop3 = $prop;
       }
 
+      private function stringrifiedMath()
+      {
+        return "Explanation: {$this->func1()} + {$this->prop2} + {$this->prop3}";
+      }
+      public function getExplanation()
+      {
+        return $this->stringrifiedMath();
+      }
       public function func3()
       {
         return 'The answer is ' . $this->prop2 + $this->prop3 + $this->func1();
