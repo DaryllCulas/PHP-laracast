@@ -5,7 +5,7 @@
 use App\Router;
 
 require_once(__DIR__ . '/Router.php');
-require_once(__DIR__ . '/Exceptions/RouteException.php');
+// require_once(__DIR__ . '/Exceptions/RouteException.php');
 require_once(__DIR__ . '/Home.php');
 require_once(__DIR__ . '/Invoices.php');
 
@@ -13,8 +13,8 @@ require_once(__DIR__ . '/Invoices.php');
 $routerObj = new Router();
 
 $routerObj->register('/', [\App\Classes\Home::class, 'index'])
-  ->register('/invoices', [\App\Classes\Invoice::class, 'index'])
-  ->register('/invoices/create', [\App\Classes\Invoice::class, 'create']);
+  ->register('/invoice', [\App\Classes\Invoice::class, 'index'])
+  ->register('/invoice/create', [\App\Classes\Invoice::class, 'create']);
 
 $requestUri = $_SERVER['REQUEST_URI'] ?? '/';
 // $home = new \App\Classes\Home(); // Create an instance of the Home class
