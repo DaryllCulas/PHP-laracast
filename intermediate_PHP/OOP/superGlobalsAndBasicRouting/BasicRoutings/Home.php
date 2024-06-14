@@ -9,6 +9,6 @@ class Home
 {
   public function index(): string
   {
-    return 'Home';
+    return 'HomeSS';
   }
 }
