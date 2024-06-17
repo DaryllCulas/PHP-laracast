@@ -11,6 +11,8 @@ require_once(__DIR__ . '/Invoices.php');
 
 session_start();
 
+define('STORAGE_PATH', __DIR__ . '/../storage');
+
 $routerObj = new Router();
 
 $routerObj->get('/', [\App\Classes\Home::class, 'index'])
