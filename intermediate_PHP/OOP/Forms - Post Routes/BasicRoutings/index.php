@@ -9,7 +9,6 @@ require_once(__DIR__ . '/Exceptions/RouteException.php');
 require_once(__DIR__ . '/Home.php');
 require_once(__DIR__ . '/Invoices.php');
 
-
 $routerObj = new Router();
 
 $routerObj->get('/', [\App\Classes\Home::class, 'index'])
