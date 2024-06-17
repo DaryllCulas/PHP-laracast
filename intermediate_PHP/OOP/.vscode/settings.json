@@ -1,0 +1,8 @@
+{
+  "php.debug.executablePath": "/usr/bin/php",
+  "php.debug.configuration": "default",
+  "php.debug.log": "/tmp/xdebug.log",
+  "php.debug.remoteHost": "127.0.0.1",
+  "php.debug.remoteEnable": true,
+  "phpserver.phpConfigPath": "/opt/lampp/etc/php.ini"
+}
