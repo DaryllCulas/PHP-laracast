@@ -8,6 +8,7 @@ class Invoice
 {
   public function index(): string
   {
+    unset($_SESSION['count']);
     var_dump($_SESSION);
     return 'Invoices';
   }
