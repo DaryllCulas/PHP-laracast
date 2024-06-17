@@ -21,3 +21,5 @@ $routerObj->get('/', [\App\Classes\Home::class, 'index'])
 $requestUri = $_SERVER['REQUEST_URI'] ?? '/';
 
 echo $routerObj->resolve($requestUri, strtolower($_SERVER['REQUEST_METHOD']));
+
+var_dump($_SESSION);
