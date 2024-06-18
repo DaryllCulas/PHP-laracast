@@ -28,6 +28,14 @@ class HomeController
     return View::make('index', ['pageName' => 'Home']);
   }
 
+  public function download()
+  {
+    header('Content-Type: application/pdf');
+    header('Content-Disposition: attachment; filename="receipt.pdf"');
+
+    readfile(STORAGE_PATH . '/receipt.pdf');
+  }
+
   public function upload()
   {
     echo '<pre>';
@@ -39,8 +47,10 @@ class HomeController
     $filePath = STORAGE_PATH . '/' . $_FILES['receipt']['name'];
     move_uploaded_file($_FILES['receipt']['tmp_name'], $filePath);
 
-    echo '<pre>';
-    var_dump(pathinfo($filePath));
-    echo '</pre>';
+    // echo '<pre>';
+    // var_dump(pathinfo($filePath));
+    // echo '</pre>';
+    header('Location: /');
+    exit;
   }
 }
