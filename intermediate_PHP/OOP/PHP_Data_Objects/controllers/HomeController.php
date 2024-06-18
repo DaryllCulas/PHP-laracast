@@ -5,25 +5,31 @@ declare(strict_types=1);
 namespace App\Controllers;
 
 use App\View;
+use PDO;
 
 
 class HomeController
 {
   public function index(): View
   {
-    setcookie(
-      'userName',
-      'Makarov',
-      time() + 10,
-      '/',
-      '',
-      false,
-      false
-    );
+    // setcookie(
+    //   'userName',
+    //   'Makarov',
+    //   time() + 10,
+    //   '/',
+    //   '',
+    //   false,
+    //   false
+    // );
 
-    $_SESSION['count'] = ($_SESSION['count'] ?? 0) + 1;
+    // $_SESSION['count'] = ($_SESSION['count'] ?? 0) + 1;
 
-    // return (new View('index'))->render();
+    // // return (new View('index'))->render();
+
+
+    $db = new PDO('mysql:host=localhost:3307;dbname=TestDB', 'root');
+
+    var_dump($db);
 
     return View::make('index', ['pageName' => 'Home']);
   }
