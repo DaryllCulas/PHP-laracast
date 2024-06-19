@@ -6,28 +6,25 @@ namespace App\Controllers;
 
 use App\View;
 use PDO;
-
+use PDOException;
 
 class HomeController
 {
   public function index(): View
   {
-    // setcookie(
-    //   'userName',
-    //   'Makarov',
-    //   time() + 10,
-    //   '/',
-    //   '',
-    //   false,
-    //   false
-    // );
 
-    // $_SESSION['count'] = ($_SESSION['count'] ?? 0) + 1;
+    try {
+      $db = new PDO('mysql:host=localhost:3307;dbname=TestDB', 'root',);
 
-    // // return (new View('index'))->render();
+      $query = 'SELECT * FROM user';
+
+      $stmt = $db->query($query);
+      var_dump($stmt->fetchAll());
+    } catch (PDOException $e) {
+      throw new PDOException($e->getMessage(), (int)$e->getCode());
+    }
 
 
-    $db = new PDO('mysql:host=localhost:3307;dbname=TestDB', 'root');
 
     var_dump($db);
 
