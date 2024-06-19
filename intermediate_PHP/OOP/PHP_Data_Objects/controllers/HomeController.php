@@ -14,12 +14,19 @@ class HomeController
   {
 
     try {
-      $db = new PDO('mysql:host=localhost:3307;dbname=TestDB', 'root',);
+      $db = new PDO('mysql:host=localhost:3307;dbname=TestDB', 'root', '', [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
 
-      $query = 'SELECT * FROM user';
+      $email = 'hesujisaz2334@gmail.com';
+      $username = 'niceone1234524';
+      $query = 'SELECT * FROM user WHERE username = :username';
+      $stmt = $db->prepare($query);
+      $stmt->execute([':username' => $username]);
 
-      $stmt = $db->query($query);
-      var_dump($stmt->fetchAll());
+      foreach ($stmt as $user) {
+        echo '<pre>';
+        var_dump($user);
+        echo '</pre>';
+      }
     } catch (PDOException $e) {
       throw new PDOException($e->getMessage(), (int)$e->getCode());
     }
