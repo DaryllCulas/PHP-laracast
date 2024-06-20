@@ -16,10 +16,11 @@ class HomeController
     try {
       $db = new PDO('mysql:host=localhost:3307;dbname=TestDB', 'root', '', [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
 
-      $email = 'mychecmicelromandsdf2399gmail.com';
-      $username = 'geraldlovekellyQuinn23';
+      $email = 'piercetheveil123@gmail.com';
+      $username = 'victorfuentes9090';
 
-      $query = 'INSERT INTO user (email, username) VALUES (:email, :username)';
+      // $query = 'INSERT INTO user (email, username) VALUES (:email, :username)';
+      $query = 'SELECT * FROM user';
 
 
       $stmt = $db->prepare($query);
