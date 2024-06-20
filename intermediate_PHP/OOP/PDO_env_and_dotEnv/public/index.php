@@ -5,6 +5,7 @@
 
 use App\Exceptions\RouteNotFoundException;
 use App\Router;
+use Dotenv\Dotenv;
 
 // require_once(__DIR__ . '/Router.php');
 // require_once(__DIR__ . '/Exceptions/RouteException.php');
@@ -16,10 +17,11 @@ require_once(__DIR__ . '/../BasicRoutings/Exceptions/RouteException.php');
 require_once(__DIR__ . '/../controllers/HomeController.php');
 require_once(__DIR__ . '/../controllers/InvoiceController.php');
 require_once(__DIR__ . '/../views/View.php');
+require_once('../vendor/autoload.php');
 
 session_start();
 
-$dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
+$dotenv = Dotenv::createImmutable(dirname(__DIR__));
 $dotenv->load();
 
 define('STORAGE_PATH', __DIR__ . '/../storage');
