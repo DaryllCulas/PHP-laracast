@@ -36,7 +36,9 @@ class HomeController
       $newUserStmt->execute([$userEmail, $full_name]);
       $userId = (int) $db->lastInsertId();
       var_dump($userId);
+
       throw new \Exception('Test');
+
       $newInvoiceStmt->execute([$amount, $userId]);
 
       $db->commit();
