@@ -1,27 +1,20 @@
 <?php
 
-// use App\Classes\Home;
-// use App\Classes\Invoice;
 
 use App\Exceptions\RouteNotFoundException;
 use App\Router;
-use Dotenv\Dotenv;
 
-// require_once(__DIR__ . '/Router.php');
-// require_once(__DIR__ . '/Exceptions/RouteException.php');
-// require_once(__DIR__ . '/Home.php');
-// require_once(__DIR__ . '/Invoices.php');
 
 require_once(__DIR__ . '/../controllers/Router.php');
 require_once(__DIR__ . '/../BasicRoutings/Exceptions/RouteException.php');
 require_once(__DIR__ . '/../controllers/HomeController.php');
 require_once(__DIR__ . '/../controllers/InvoiceController.php');
 require_once(__DIR__ . '/../views/View.php');
-require_once('../vendor/autoload.php');
+require_once(__DIR__ . '/../vendor/autoload.php');
 
 session_start();
 
-$dotenv = Dotenv::createImmutable(dirname(__DIR__));
+$dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
 $dotenv->load();
 
 define('STORAGE_PATH', __DIR__ . '/../storage');
@@ -44,8 +37,7 @@ try {
 
   var_dump($_SESSION);
 } catch (RouteNotFoundException $e) {
-  // echo $e->getMessage();
-  // header('HTTP/1.1 404 Not Found');
+
   http_response_code(404);
 
   echo \App\View::make('error/404');
