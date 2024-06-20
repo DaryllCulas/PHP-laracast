@@ -16,7 +16,13 @@ class HomeController
     try {
       var_dump($_ENV['DB_HOST']);
 
-      $db = new PDO('mysql:host=localhost:3307;dbname=TestDB', 'root', '', [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
+      // $db = new PDO('mysql:$_ENV[DB_HOST];dbname=TestDB', 'root', '', [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
+
+      $db = new PDO(
+        'mysql:host=' . $_ENV['DB_HOST'] . ';dbname=' . $_ENV['DB_DATABASE'],
+        $_ENV['DB_USER'],
+        $_ENV['DB_PASS']
+      );
 
       $email = 'piercetheveil123@gmail.com';
       $username = 'victorfuentes9090';
