@@ -14,15 +14,16 @@ class HomeController
   {
 
     try {
+      var_dump($_ENV['DB_HOST']);
 
-      $db = new PDO('mysql:host=localhost:3307;dbname=TestDB', 'root', '', [PDO::ATTR_EMULATE_PREPARES => false]);
+      $db = new PDO('mysql:host=' . $_ENV['DB_HOST'] . ';dbname=' . $_ENV['DB_DATABASE'], $_ENV['DB_USER'], $_ENV['DB_PASS']);
     } catch (PDOException $e) {
 
       throw new PDOException($e->getMessage(), (int) $e->getCode());
     }
 
-    $userEmail = 'maydayParade27@gmail.com';
-    $full_name = 'Derek Sanders';
+    $userEmail = 'theallamericanrejects@gmail.com';
+    $full_name = 'Ronnie Winter';
     $amount = 25;
 
     try {
@@ -34,7 +35,8 @@ class HomeController
 
       $newUserStmt->execute([$userEmail, $full_name]);
       $userId = (int) $db->lastInsertId();
-
+      var_dump($userId);
+      throw new \Exception('Test');
       $newInvoiceStmt->execute([$amount, $userId]);
 
       $db->commit();
