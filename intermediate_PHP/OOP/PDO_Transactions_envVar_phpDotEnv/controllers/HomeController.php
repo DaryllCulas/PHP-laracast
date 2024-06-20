@@ -14,44 +14,48 @@ class HomeController
   {
 
     try {
-      var_dump($_ENV['DB_HOST']);
+
       $db = new PDO('mysql:host=localhost:3307;dbname=TestDB', 'root', '', [PDO::ATTR_EMULATE_PREPARES => false]);
-
-    
-
-      $userEmail = 'hard away4@gmail.com';
-      $full_name = 'hard away III';
-      $is_active = 1;
-      $created_at = date('Y-m-d H:i:s', strtotime('07/11/2021 12:00PM'));
-
-
-      $query = 'INSERT INTO users(userEmail, full_name, is_active, created_at, updated_at) VALUES (:userEmail, :full_name, :is_active, :created_at1, :created_at2)';
-
-      $stmt = $db->prepare($query);
-
-      $stmt->bindValue('userEmail', $userEmail);
-      $stmt->bindValue('full_name', $full_name);
-      $stmt->bindValue('is_active', $is_active, PDO::PARAM_BOOL);
-      $stmt->bindValue('created_at1', $created_at);
-      $stmt->bindValue('created_at2', $created_at);
-
-
-
-      $stmt->execute();
-
-      $id = (int) $db->lastInsertId();
-      $users = $db->query('SELECT * FROM users WHERE id = ' . $id)->fetch();
-
-      echo '<pre>';
-      var_dump($users);
-      echo '</pre>';
     } catch (PDOException $e) {
 
-      throw new PDOException($e->getMessage(), (int)$e->getCode());
+      throw new PDOException($e->getMessage(), (int) $e->getCode());
     }
 
+    $userEmail = 'maydayParade27@gmail.com';
+    $full_name = 'Derek Sanders';
+    $amount = 25;
 
+    try {
+      $db->beginTransaction();
 
+      $newUserStmt = $db->prepare('INSERT INTO users (userEmail, full_name, is_active, created_at) VALUES (?, ?, 1, NOW())');
+      $newInvoiceStmt = $db->prepare('INSERT INTO invoices (amount, user_id)
+          VALUES (?, ?)');
+
+      $newUserStmt->execute([$userEmail, $full_name]);
+      $userId = (int) $db->lastInsertId();
+
+      $newInvoiceStmt->execute([$amount, $userId]);
+
+      $db->commit();
+    } catch (\Throwable $e) {
+      if ($db->inTransaction()) {
+        $db->rollBack();
+      }
+    }
+
+    $fetchStmt = $db->prepare(
+      'SELECT invoices.invoice_id AS invoice_id, amount, user_id, full_name
+        FROM invoices
+        INNER JOIN users ON user_id = users.id
+        WHERE userEmail = ?'
+    );
+
+    $fetchStmt->execute([$userEmail]);
+
+    echo '<pre>';
+    var_dump($fetchStmt->fetch(PDO::FETCH_ASSOC));
+    echo '</pre>';
     var_dump($db);
 
     return View::make('index', ['pageName' => 'Home']);
@@ -61,7 +65,6 @@ class HomeController
   {
     echo '<pre>';
     var_dump($_FILES);
-
     echo '</pre>';
 
 
