@@ -17,7 +17,11 @@ class HomeController
       var_dump($_ENV['DB_HOST']);
       $db = new PDO('mysql:host=localhost:3307;dbname=TestDB', 'root', '', [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
 
-      $query = 'SELECT * FROM users';
+      // SQL INJECTION if you want type this: http://localhost:3304/?userEmail=niceone@gmail.com%22+OR+1=1+--+
+
+      $email = $_GET['userEmail'];
+      $query = 'SELECT * FROM users WHERE userEmail = "' . $email . '"';
+      echo $query . '<br/>';
 
       foreach ($db->query($query) as $users) {
         echo '<pre>';
