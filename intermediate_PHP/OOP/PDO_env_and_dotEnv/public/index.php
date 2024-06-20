@@ -19,6 +19,9 @@ require_once(__DIR__ . '/../views/View.php');
 
 session_start();
 
+$dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
+$dotenv->load();
+
 define('STORAGE_PATH', __DIR__ . '/../storage');
 define('VIEW_PATH', __DIR__ . '/../views');
 
