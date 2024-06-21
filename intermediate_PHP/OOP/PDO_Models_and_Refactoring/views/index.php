@@ -13,6 +13,21 @@
     <input type="file" name="receipt" />
     <button type="submit">Upload</button>
   </form>
+  <hr />
+  <div>
+
+    <?php if (!empty($invoice)) : ?>
+      Invoice ID: <?= htmlspecialchars($invoice['invoice_id'], ENT_QUOTES) ?>
+      <br />
+      Invoice amount: <?= htmlspecialchars($invoice['amount'], ENT_QUOTES) ?>
+      <br />
+      User: <?= htmlspecialchars($invoice['full_name'], ENT_QUOTES)  ?>
+    <?php endif ?>
+
+
+  </div>
+
+
 </body>
 
 </html>
