@@ -5,9 +5,11 @@ declare(strict_types=1);
 namespace App\Controllers;
 
 use App\App;
+use App\Models\Invoice;
+use App\Models\User;
 use App\View;
 use PDO;
-use PDOException;
+
 
 class HomeController
 {
@@ -16,47 +18,29 @@ class HomeController
 
     $db = App::db();
 
-    $userEmail = 'theredjumpsuitapparatus27@gmail.com';
-    $full_name = 'Ronnie Winter';
+
+    $userEmail = 'secondhandserenade34@gmail.com';
+    $full_name = 'manny pacquiao';
     $amount = 25;
 
     try {
       $db->beginTransaction();
 
-      $newUserStmt = $db->prepare('INSERT INTO users (userEmail, full_name, is_active, created_at) VALUES (?, ?, 1, NOW())');
-      $newInvoiceStmt = $db->prepare('INSERT INTO invoices (amount, user_id)
-          VALUES (?, ?)');
+      $userModel = new User();
+      $invoiceModel = new Invoice();
 
-      $newUserStmt->execute([$userEmail, $full_name]);
-      $userId = (int) $db->lastInsertId();
-      var_dump($userId);
-
-      throw new \Exception('Test');
-
-      $newInvoiceStmt->execute([$amount, $userId]);
+      $userId = $userModel->create($userEmail, $full_name);
+      $invoiceId = $invoiceModel->create($amount, $userId);
 
       $db->commit();
     } catch (\Throwable $e) {
       if ($db->inTransaction()) {
         $db->rollBack();
       }
+      throw $e;
     }
 
-    $fetchStmt = $db->prepare(
-      'SELECT invoices.invoice_id AS invoice_id, amount, user_id, full_name
-        FROM invoices
-        INNER JOIN users ON user_id = users.id
-        WHERE userEmail = ?'
-    );
-
-    $fetchStmt->execute([$userEmail]);
-
-    echo '<pre>';
-    var_dump($fetchStmt->fetch(PDO::FETCH_ASSOC));
-    echo '</pre>';
-    var_dump($db);
-
-    return View::make('index', ['pageName' => 'Home']);
+    return View::make('index', ['invoice' => $invoiceModel->find($invoiceId)]);
   }
 
   public function upload()
