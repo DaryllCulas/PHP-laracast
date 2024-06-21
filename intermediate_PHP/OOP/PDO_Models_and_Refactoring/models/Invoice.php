@@ -20,17 +20,18 @@ class Invoice extends Model
     return (int) $this->db->lastInsertId();
   }
 
-  public function find(int $invoiceId): array
+  public function find(int $invoiceId): ?array
   {
     $stmt = $this->db->prepare(
       'SELECT invoices.invoice_id AS invoice_id, amount, user_id, full_name
-        FROM invoices
-        INNER JOIN users ON user_id = users.id
-        WHERE userEmail LIKE ?'
+          FROM invoices
+          INNER JOIN users ON user_id = users.id
+          WHERE invoice_id = ?'
     );
 
     $stmt->execute([$invoiceId]);
     $invoice = $stmt->fetch();
+
     return $invoice ? $invoice : null;
   }
 }
