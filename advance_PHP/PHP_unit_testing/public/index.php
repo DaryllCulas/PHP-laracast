@@ -1,24 +1,13 @@
 <?php
 
 
+require_once(__DIR__ . '/../vendor/autoload.php');
+
 use App\App;
 use App\Config;
-use App\Exceptions\RouteNotFoundException;
-use App\Router;
+use App\Controllers\Router;
 
-require_once(__DIR__ . '/../App.php');
-require_once(__DIR__ . '/../DB.php');
-require_once(__DIR__ . '/../Config.php');
-require_once(__DIR__ . '/../Model.php');
-require_once(__DIR__ . '/../models/User.php');
-require_once(__DIR__ . '/../models/SignUp.php');
-require_once(__DIR__ . '/../models/Invoice.php');
-require_once(__DIR__ . '/../controllers/Router.php');
-require_once(__DIR__ . '/../BasicRoutings/Exceptions/RouteException.php');
-require_once(__DIR__ . '/../controllers/HomeController.php');
-require_once(__DIR__ . '/../controllers/InvoiceController.php');
-require_once(__DIR__ . '/../views/View.php');
-require_once(__DIR__ . '/../vendor/autoload.php');
+
 
 session_start();
 
@@ -26,7 +15,7 @@ $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
 $dotenv->load();
 
 define('STORAGE_PATH', __DIR__ . '/../storage');
-define('VIEW_PATH', __DIR__ . '/../views');
+define('VIEW_PATH', __DIR__ . '/../app/views');
 
 
 $routerObj = new Router();

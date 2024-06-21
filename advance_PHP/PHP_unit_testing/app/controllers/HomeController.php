@@ -8,20 +8,20 @@ use App\App;
 use App\Models\Invoice;
 use App\Models\SignUp;
 use App\Models\User;
-use App\View;
+use App\Views\View;
 use PDO;
 
 
 class HomeController
 {
-  public function index(): View
+  public function index(): \App\Views\View
   {
 
     $db = App::db();
     var_dump($db);
 
-    $userEmail = 'lebronjames35@gmail.com';
-    $full_name = 'Lebron James';
+    $userEmail = 'sanjicook253434@gmail.com';
+    $full_name = 'vinsmoke sanji';
     $amount = 25;
 
     $userModel = new User();

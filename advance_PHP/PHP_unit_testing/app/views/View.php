@@ -2,7 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App;
+namespace App\Views;
+
+use App\Exceptions\ViewNotFoundException;
 
 class View
 {
@@ -19,7 +21,7 @@ class View
     $viewPath = VIEW_PATH . '/' . $this->view . '.php';
 
     if (!file_exists($viewPath)) {
-      throw new \App\Exceptions\ViewNotFoundException;
+      throw new ViewNotFoundException;
     }
 
     foreach ($this->params as $key => $value) {

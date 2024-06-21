@@ -14,4 +14,9 @@ return array(
     'GrahamCampbell\\ResultType\\' => array($vendorDir . '/graham-campbell/result-type/src'),
     'Dotenv\\' => array($vendorDir . '/vlucas/phpdotenv/src'),
     'DeepCopy\\' => array($vendorDir . '/myclabs/deep-copy/src/DeepCopy'),
+    'App\\Views\\' => array($baseDir . '/app/views'),
+    'App\\Models\\' => array($baseDir . '/app/models'),
+    'App\\Exceptions\\' => array($baseDir . '/app/BasicRoutings/Exceptions'),
+    'App\\Controllers\\' => array($baseDir . '/app/controllers'),
+    'App\\' => array($baseDir . '/app'),
 );
