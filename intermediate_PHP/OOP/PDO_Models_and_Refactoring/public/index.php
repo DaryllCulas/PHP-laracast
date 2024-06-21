@@ -6,15 +6,18 @@ use App\Config;
 use App\Exceptions\RouteNotFoundException;
 use App\Router;
 
-
+require_once(__DIR__ . '/../App.php');
+require_once(__DIR__ . '/../DB.php');
+require_once(__DIR__ . '/../Config.php');
+require_once(__DIR__ . '/../Model.php');
+require_once(__DIR__ . '/../models/User.php');
+require_once(__DIR__ . '/../models/SignUp.php');
+require_once(__DIR__ . '/../models/Invoice.php');
 require_once(__DIR__ . '/../controllers/Router.php');
 require_once(__DIR__ . '/../BasicRoutings/Exceptions/RouteException.php');
 require_once(__DIR__ . '/../controllers/HomeController.php');
 require_once(__DIR__ . '/../controllers/InvoiceController.php');
 require_once(__DIR__ . '/../views/View.php');
-require_once(__DIR__ . '/../App.php');
-require_once(__DIR__ . '/../DB.php');
-require_once(__DIR__ . '/../Config.php');
 require_once(__DIR__ . '/../vendor/autoload.php');
 
 session_start();
