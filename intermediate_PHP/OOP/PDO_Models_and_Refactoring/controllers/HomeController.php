@@ -6,6 +6,7 @@ namespace App\Controllers;
 
 use App\App;
 use App\Models\Invoice;
+use App\Models\SignUp;
 use App\Models\User;
 use App\View;
 use PDO;
@@ -17,28 +18,24 @@ class HomeController
   {
 
     $db = App::db();
+    var_dump($db);
 
-
-    $userEmail = 'secondhandserenade34@gmail.com';
-    $full_name = 'manny pacquiao';
+    $userEmail = 'lebronjames35@gmail.com';
+    $full_name = 'Lebron James';
     $amount = 25;
 
-    try {
-      $db->beginTransaction();
+    $userModel = new User();
+    $invoiceModel = new Invoice();
 
-      $userModel = new User();
-      $invoiceModel = new Invoice();
-
-      $userId = $userModel->create($userEmail, $full_name);
-      $invoiceId = $invoiceModel->create($amount, $userId);
-
-      $db->commit();
-    } catch (\Throwable $e) {
-      if ($db->inTransaction()) {
-        $db->rollBack();
-      }
-      throw $e;
-    }
+    $invoiceId = (new SignUp($userModel, $invoiceModel))->register(
+      [
+        'userEmail' => $userEmail,
+        'full_name' => $full_name,
+      ],
+      [
+        'amount' => $amount,
+      ]
+    );
 
     return View::make('index', ['invoice' => $invoiceModel->find($invoiceId)]);
   }
