@@ -6,6 +6,8 @@ namespace Tests\Unit;
 
 
 use App\Controllers\Router;
+use App\Exceptions\RouteNotFoundException;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
@@ -82,5 +84,38 @@ class RouterTest extends TestCase
     $this->router = new Router();
 
     $this->assertEmpty($this->router->routes());
+  }
+
+  #[Test]
+  #[DataProvider('routeNotFoundCases')]
+  public function it_throws_route_not_found_exception(
+    string $requestUri,
+    string $requestMethod
+  ): void {
+    $users = new class()
+    {
+      public function delete(): bool
+      {
+        return true;
+      }
+    };
+
+
+    $this->router->post('/users', [$users::class, 'store']);
+    $this->router->get('/users', ['Users', 'index']);
+
+    $this->expectException(RouteNotFoundException::class);
+    $this->router->resolve($requestUri, $requestMethod);
+  }
+
+
+  public function routeNotFoundCases(): array
+  {
+    return [
+      ['/users', 'put'],
+      ['/invoices', 'post'],
+      ['/users', 'get'],
+      ['/users', 'post'],
+    ];
   }
 }
