@@ -30,11 +30,11 @@ class RouterTest extends TestCase
 
 
     // when we call a register method
-    $this->router->register('get', '/Users', ['Users', 'index']);
+    $this->router->register('get', '/users', ['Users', 'index']);
 
     $expected = [
       'get' => [
-        '/Users' => ['Users', 'index']
+        '/users' => ['Users', 'index']
 
       ]
     ];
@@ -67,11 +67,11 @@ class RouterTest extends TestCase
 
 
 
-    $this->router->post('/Users', ['Users', 'store']);
+    $this->router->post('/users', ['Users', 'store']);
 
     $expected = [
       'post' => [
-        '/Users' => ['Users', 'store']
+        '/users' => ['Users', 'store']
 
       ]
     ];
@@ -86,6 +86,9 @@ class RouterTest extends TestCase
     $this->assertEmpty($this->router->routes());
   }
 
+
+
+  // Failed: 4 test => 4 RouteNotFoundException invalids
   #[Test]
   #[DataProvider('routeNotFoundCases')]
   public function it_throws_route_not_found_exception(
@@ -109,7 +112,7 @@ class RouterTest extends TestCase
   }
 
 
-  public function routeNotFoundCases(): array
+  public static function routeNotFoundCases(): array
   {
     return [
       ['/users', 'put'],
@@ -117,5 +120,36 @@ class RouterTest extends TestCase
       ['/users', 'get'],
       ['/users', 'post'],
     ];
+  }
+
+
+  #[Test]
+  public function it_resolves_route_from_a_closure(): void
+  {
+    $this->router->get('/users', fn () => [1, 2, 3]);
+
+    $this->assertEquals(
+      [1, 2, 3],
+      $this->router->resolve('/users', 'get')
+    );
+  }
+
+  #[Test]
+  public function it_resolves_route(): void
+  {
+    $users = new class()
+    {
+      public function index(): array
+      {
+        return [1, 2, 3,];
+      }
+    };
+
+    $this->router->get('/users', [$users::class, 'index']);
+
+    $this->assertEquals(
+      [1, 2, 3],
+      $this->router->resolve('/users', 'get')
+    );
   }
 }

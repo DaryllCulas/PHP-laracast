@@ -53,7 +53,7 @@ class Router
           return call_user_func_array([$class, $method], []);
         }
       }
+      throw new RouteNotFoundException();
     }
-    throw new RouteNotFoundException();
   }
 }

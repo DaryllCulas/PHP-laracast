@@ -52,7 +52,7 @@ class ComposerStaticInite875ae8441d070d7dda5f4b47a2117aa
     public static $prefixDirsPsr4 = array (
         'Tests\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/test/Unit',
+            0 => __DIR__ . '/../..' . '/tests',
         ),
         'Symfony\\Polyfill\\Php80\\' => 
         array (
@@ -96,7 +96,7 @@ class ComposerStaticInite875ae8441d070d7dda5f4b47a2117aa
         ),
         'App\\Exceptions\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/app/BasicRoutings/Exceptions',
+            0 => __DIR__ . '/../..' . '/app/Exceptions',
         ),
         'App\\Controllers\\' => 
         array (
@@ -1632,6 +1632,7 @@ class ComposerStaticInite875ae8441d070d7dda5f4b47a2117aa
         'Symfony\\Polyfill\\Mbstring\\Mbstring' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/Mbstring.php',
         'Symfony\\Polyfill\\Php80\\Php80' => __DIR__ . '/..' . '/symfony/polyfill-php80/Php80.php',
         'Symfony\\Polyfill\\Php80\\PhpToken' => __DIR__ . '/..' . '/symfony/polyfill-php80/PhpToken.php',
+        'Tests\\Unit\\RouterTest' => __DIR__ . '/../..' . '/tests/Unit/RouterTest.php',
         'TheSeer\\Tokenizer\\Exception' => __DIR__ . '/..' . '/theseer/tokenizer/src/Exception.php',
         'TheSeer\\Tokenizer\\NamespaceUri' => __DIR__ . '/..' . '/theseer/tokenizer/src/NamespaceUri.php',
         'TheSeer\\Tokenizer\\NamespaceUriException' => __DIR__ . '/..' . '/theseer/tokenizer/src/NamespaceUriException.php',
