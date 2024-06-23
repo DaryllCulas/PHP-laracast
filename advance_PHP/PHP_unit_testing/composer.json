@@ -13,5 +13,9 @@
             "App\\Views\\": "app/views/",
             "App\\Exceptions\\": "app/BasicRoutings/Exceptions/"
         }
+    },
+    "config": {
+        "optimize-autoloader": true
     }
+  
 }

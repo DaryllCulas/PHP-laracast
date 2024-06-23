@@ -14,14 +14,14 @@ use PDO;
 
 class HomeController
 {
-  public function index(): \App\Views\View
+  public function index(): View
   {
 
     $db = App::db();
     var_dump($db);
 
-    $userEmail = 'sanjicook253434@gmail.com';
-    $full_name = 'vinsmoke sanji';
+    $userEmail = 'RoronoaZoro@gmail.com';
+    $full_name = 'Roronoa Zorro';
     $amount = 25;
 
     $userModel = new User();

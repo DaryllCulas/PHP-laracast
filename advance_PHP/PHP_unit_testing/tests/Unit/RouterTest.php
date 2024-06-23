@@ -4,14 +4,15 @@ declare(strict_types=1);
 
 namespace Tests\Unit;
 
-use App\Router;
+
+use App\Controllers\Router;
 use PHPUnit\Framework\TestCase;
 
 
 class RouterTest extends TestCase
 {
   /** @test */
-  public function it_registerers_a_route(): void
+  public function it_registers_a_route(): void
   {
     //given that we have a router object
     $router = new Router();
