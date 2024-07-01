@@ -12,7 +12,7 @@ class InvoiceServiceTest extends TestCase
 {
 
   #[Test]
-  public function it_processes_invoice(): void
+  public function testProcessesInvoice(): void
   {
 
     // given invoice service
