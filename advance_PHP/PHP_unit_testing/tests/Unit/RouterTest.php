@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace Tests\Unit;
 
-
-use App\Controllers\Router;
 use App\Exceptions\RouteNotFoundException;
+use App\Controllers\Router;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
