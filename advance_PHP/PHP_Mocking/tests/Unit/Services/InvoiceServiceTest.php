@@ -24,6 +24,9 @@ class InvoiceServiceTest extends TestCase
 
     $emailServiceMock = $this->createMock(EmailService::class);
 
+    // stubs
+    $paymentGatewayServiceMock->method('charge')->willReturn(true);
+
 
     // given invoice service
     $invoiceService = new InvoiceService(
