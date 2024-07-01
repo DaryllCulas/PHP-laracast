@@ -15,7 +15,7 @@ class InvoiceServiceTest extends TestCase
 {
 
   #[Test]
-  public function testProcessesInvoice(): void
+  public function test_if_it_processes_Invoice(): void
   {
 
     $salesTaxServiceMock = $this->createMock(SalesTaxService::class);
