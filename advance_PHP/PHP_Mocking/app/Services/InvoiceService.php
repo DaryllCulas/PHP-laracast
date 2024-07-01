@@ -10,23 +10,30 @@ use App\Services\SalesTaxService;
 
 class InvoiceService
 {
+  // Dependency Injection here
+  public function __construct(
+    protected SalesTaxService $salesTaxService,
+    protected PaymentGatewayService $paymentGatewayService,
+    protected EmailService $emailService
+
+  ) {
+  }
+
+
   public function process(array $customer, float $amount): bool
   {
-    $salesTaxService = new SalesTaxService();
-    $gatewayService = new PaymentGatewayService();
-    $emailService = new EmailService();
 
 
     // 1. calculate sales Tax
-    $tax = $salesTaxService->calculate($amount, $customer);
+    $tax = $this->salesTaxService->calculate($amount, $customer);
 
     // 2. process invoice
-    if (!$gatewayService->charge($customer, $amount, $tax)) {
+    if (!$this->paymentGatewayService->charge($customer, $amount, $tax)) {
       return false;
     }
 
     // 3. send receipt
-    $emailService->send($customer, 'receipt');
+    $this->emailService->send($customer, 'receipt');
 
     return true;
   }
