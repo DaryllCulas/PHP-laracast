@@ -12,6 +12,8 @@ return array(
     'App\\Controllers\\InvoiceController' => $baseDir . '/app/controllers/InvoiceController.php',
     'App\\Controllers\\Router' => $baseDir . '/app/controllers/Router.php',
     'App\\DB' => $baseDir . '/app/DB.php',
+    'App\\Exceptions\\RouteNotFoundException' => $baseDir . '/app/Exceptions/RouteNotFoundException.php',
+    'App\\Exceptions\\ViewNotFoundException' => $baseDir . '/app/Exceptions/ViewNotFoundException.php',
     'App\\Model' => $baseDir . '/app/Model.php',
     'App\\Models\\Invoice' => $baseDir . '/app/models/Invoice.php',
     'App\\Models\\SignUp' => $baseDir . '/app/models/SignUp.php',

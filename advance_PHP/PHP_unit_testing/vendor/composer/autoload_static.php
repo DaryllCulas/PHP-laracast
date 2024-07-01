@@ -115,6 +115,8 @@ class ComposerStaticInite875ae8441d070d7dda5f4b47a2117aa
         'App\\Controllers\\InvoiceController' => __DIR__ . '/../..' . '/app/controllers/InvoiceController.php',
         'App\\Controllers\\Router' => __DIR__ . '/../..' . '/app/controllers/Router.php',
         'App\\DB' => __DIR__ . '/../..' . '/app/DB.php',
+        'App\\Exceptions\\RouteNotFoundException' => __DIR__ . '/../..' . '/app/Exceptions/RouteNotFoundException.php',
+        'App\\Exceptions\\ViewNotFoundException' => __DIR__ . '/../..' . '/app/Exceptions/ViewNotFoundException.php',
         'App\\Model' => __DIR__ . '/../..' . '/app/Model.php',
         'App\\Models\\Invoice' => __DIR__ . '/../..' . '/app/models/Invoice.php',
         'App\\Models\\SignUp' => __DIR__ . '/../..' . '/app/models/SignUp.php',
