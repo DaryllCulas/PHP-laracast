@@ -8,6 +8,7 @@ use App\App;
 use App\Models\Invoice;
 use App\Models\SignUp;
 use App\Models\User;
+use App\Services\Container;
 use App\Services\InvoiceService;
 use App\Views\View;
 
@@ -17,14 +18,14 @@ class HomeController
 {
   public function index(): View
   {
-    App::$container->get(InvoiceService::class)->process([], 25);
+    (new Container())->get(InvoiceService::class)->process([], 25);
 
 
     $db = App::db();
     var_dump($db);
 
-    $userEmail = 'RobinArcheologist@gmail.com';
-    $full_name = 'Robin Chan';
+    $userEmail = 'Goldroger@gmail.com';
+    $full_name = 'Gol Roger';
     $amount = 25;
 
     $userModel = new User();
