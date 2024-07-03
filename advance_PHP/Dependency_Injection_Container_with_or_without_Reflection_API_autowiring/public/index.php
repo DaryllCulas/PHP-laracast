@@ -1,5 +1,7 @@
 <?php
 
+use App\Services\Container;
+
 
 require_once(__DIR__ . '/../vendor/autoload.php');
 
@@ -17,8 +19,8 @@ $dotenv->load();
 define('STORAGE_PATH', __DIR__ . '/../storage');
 define('VIEW_PATH', __DIR__ . '/../app/views');
 
-
-$routerObj = new Router();
+$container = new Container();
+$routerObj = new Router($container);
 
 $routerObj->get('/', [\App\Controllers\HomeController::class, 'index'])
   ->post('/upload', [\App\Controllers\HomeController::class, 'upload'])

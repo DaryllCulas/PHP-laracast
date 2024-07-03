@@ -16,16 +16,20 @@ use App\Views\View;
 
 class HomeController
 {
+
+  public function __construct(private InvoiceService $invoiceService)
+  {
+  }
   public function index(): View
   {
-    (new Container())->get(InvoiceService::class)->process([], 25);
+    $this->invoiceService->process([], 25);
 
 
     $db = App::db();
     var_dump($db);
 
-    $userEmail = 'Goldroger@gmail.com';
-    $full_name = 'Gol Roger';
+    $userEmail = 'SilverRayleigh@gmail.com';
+    $full_name = 'Silver Rayleigh';
     $amount = 25;
 
     $userModel = new User();
