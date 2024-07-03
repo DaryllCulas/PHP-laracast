@@ -31,6 +31,7 @@ $routerObj->get('/', [\App\Controllers\HomeController::class, 'index'])
 
 
 (new App(
+  $container,
   $routerObj,
   ['uri' => $_SERVER['REQUEST_URI'], 'method' => $_SERVER['REQUEST_METHOD']],
   new Config($_ENV)
