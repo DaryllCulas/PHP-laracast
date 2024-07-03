@@ -8,20 +8,23 @@ use App\App;
 use App\Models\Invoice;
 use App\Models\SignUp;
 use App\Models\User;
+use App\Services\InvoiceService;
 use App\Views\View;
-use PDO;
+
 
 
 class HomeController
 {
   public function index(): View
   {
+    App::$container->get(InvoiceService::class)->process([], 25);
+
 
     $db = App::db();
     var_dump($db);
 
-    $userEmail = 'ChopperRacoon@gmail.com';
-    $full_name = 'Doctor Chopper';
+    $userEmail = 'RobinArcheologist@gmail.com';
+    $full_name = 'Robin Chan';
     $amount = 25;
 
     $userModel = new User();

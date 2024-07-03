@@ -27,6 +27,7 @@ class ComposerStaticInite875ae8441d070d7dda5f4b47a2117aa
         ),
         'P' => 
         array (
+            'Psr\\Container\\' => 14,
             'PhpParser\\' => 10,
             'PhpOption\\' => 10,
         ),
@@ -65,6 +66,10 @@ class ComposerStaticInite875ae8441d070d7dda5f4b47a2117aa
         'Symfony\\Polyfill\\Ctype\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
+        ),
+        'Psr\\Container\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/container/src',
         ),
         'PhpParser\\' => 
         array (
@@ -121,6 +126,10 @@ class ComposerStaticInite875ae8441d070d7dda5f4b47a2117aa
         'App\\Models\\Invoice' => __DIR__ . '/../..' . '/app/models/Invoice.php',
         'App\\Models\\SignUp' => __DIR__ . '/../..' . '/app/models/SignUp.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/models/User.php',
+        'App\\Services\\EmailService' => __DIR__ . '/../..' . '/app/Services/EmailService.php',
+        'App\\Services\\InvoiceService' => __DIR__ . '/../..' . '/app/Services/InvoiceService.php',
+        'App\\Services\\PaymentGatewayService' => __DIR__ . '/../..' . '/app/Services/PaymentGatewayService.php',
+        'App\\Services\\SalesTaxService' => __DIR__ . '/../..' . '/app/Services/SalesTaxService.php',
         'App\\Views\\View' => __DIR__ . '/../..' . '/app/views/View.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
@@ -1426,6 +1435,9 @@ class ComposerStaticInite875ae8441d070d7dda5f4b47a2117aa
         'PhpParser\\PrettyPrinter\\Standard' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/PrettyPrinter/Standard.php',
         'PhpParser\\Token' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Token.php',
         'PhpToken' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/PhpToken.php',
+        'Psr\\Container\\ContainerExceptionInterface' => __DIR__ . '/..' . '/psr/container/src/ContainerExceptionInterface.php',
+        'Psr\\Container\\ContainerInterface' => __DIR__ . '/..' . '/psr/container/src/ContainerInterface.php',
+        'Psr\\Container\\NotFoundExceptionInterface' => __DIR__ . '/..' . '/psr/container/src/NotFoundExceptionInterface.php',
         'SebastianBergmann\\CliParser\\AmbiguousOptionException' => __DIR__ . '/..' . '/sebastian/cli-parser/src/exceptions/AmbiguousOptionException.php',
         'SebastianBergmann\\CliParser\\Exception' => __DIR__ . '/..' . '/sebastian/cli-parser/src/exceptions/Exception.php',
         'SebastianBergmann\\CliParser\\OptionDoesNotAllowArgumentException' => __DIR__ . '/..' . '/sebastian/cli-parser/src/exceptions/OptionDoesNotAllowArgumentException.php',
@@ -1635,6 +1647,7 @@ class ComposerStaticInite875ae8441d070d7dda5f4b47a2117aa
         'Symfony\\Polyfill\\Php80\\Php80' => __DIR__ . '/..' . '/symfony/polyfill-php80/Php80.php',
         'Symfony\\Polyfill\\Php80\\PhpToken' => __DIR__ . '/..' . '/symfony/polyfill-php80/PhpToken.php',
         'Tests\\Unit\\RouterTest' => __DIR__ . '/../..' . '/tests/Unit/RouterTest.php',
+        'Tests\\Unit\\Services\\InvoiceServiceTest' => __DIR__ . '/../..' . '/tests/Unit/Services/InvoiceServiceTest.php',
         'TheSeer\\Tokenizer\\Exception' => __DIR__ . '/..' . '/theseer/tokenizer/src/Exception.php',
         'TheSeer\\Tokenizer\\NamespaceUri' => __DIR__ . '/..' . '/theseer/tokenizer/src/NamespaceUri.php',
         'TheSeer\\Tokenizer\\NamespaceUriException' => __DIR__ . '/..' . '/theseer/tokenizer/src/NamespaceUriException.php',

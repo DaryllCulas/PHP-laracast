@@ -3,7 +3,7 @@
         'name' => 'your-namespace/php_unit_testing',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '6d46d9830a40366c6291739202005d27c782284d',
+        'reference' => '2301c385cd14e98af3942e60457b5f635f5e3be9',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -117,6 +117,15 @@
             'install_path' => __DIR__ . '/../phpunit/phpunit',
             'aliases' => array(),
             'dev_requirement' => true,
+        ),
+        'psr/container' => array(
+            'pretty_version' => '2.0.2',
+            'version' => '2.0.2.0',
+            'reference' => 'c71ecc56dfe541dbd90c5360474fbc405f8d5963',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../psr/container',
+            'aliases' => array(),
+            'dev_requirement' => false,
         ),
         'sebastian/cli-parser' => array(
             'pretty_version' => '3.0.1',
@@ -301,7 +310,7 @@
         'your-namespace/php_unit_testing' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '6d46d9830a40366c6291739202005d27c782284d',
+            'reference' => '2301c385cd14e98af3942e60457b5f635f5e3be9',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
