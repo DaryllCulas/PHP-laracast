@@ -11,16 +11,26 @@ class GeneratorExample
   {
     $numbers = $this->lazyRange(1, 1000);
 
-    echo '<pre>';
-    print_r($numbers);
-    echo '</pre>';
+    echo $numbers->current();
+    $numbers->next();
+    echo $numbers->current();
+    $numbers->next();
+
+    echo $numbers->getReturn();
   }
 
 
   private function lazyRange(int $start, int $end): Generator
   {
+    echo 'Hello';
     for ($i = $start; $i <= $end; $i++) {
-      yield $i;
+      yield $start;
+
+      echo 'World';
+
+      yield $end;
+
+      return '!';
     }
   }
 }
