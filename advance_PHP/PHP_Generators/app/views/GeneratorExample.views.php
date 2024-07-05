@@ -8,12 +8,10 @@
 </head>
 
 <body>
-  <h1>Generator Example</h1>
+  <h1>Ticket Generator Example</h1>
   <?php
 
-  use App\Views\GeneratorExample;
-
-  $GeneratorObj = new GeneratorExample();
+  $GeneratorObj = new \App\Views\GeneratorExample(new \App\Models\Ticket());
 
   echo $GeneratorObj->index();
 
