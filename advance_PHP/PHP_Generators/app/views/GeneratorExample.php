@@ -11,9 +11,9 @@ class GeneratorExample
   {
     $numbers = $this->lazyRange(1, 1000);
 
-    foreach ($numbers as $number) {
-      echo $number . '<br>';
-    }
+    echo '<pre>';
+    print_r($numbers);
+    echo '</pre>';
   }
 
 
