@@ -63,6 +63,10 @@ class ComposerStaticInit8162b5eba91a0fa08f928178f836d129
             'Composer\\CaBundle\\' => 18,
             'Composer\\' => 9,
         ),
+        'A' => 
+        array (
+            'App\\' => 4,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -177,6 +181,10 @@ class ComposerStaticInit8162b5eba91a0fa08f928178f836d129
         'Composer\\' => 
         array (
             0 => __DIR__ . '/..' . '/composer/composer/src/Composer',
+        ),
+        'App\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/App',
         ),
     );
 
