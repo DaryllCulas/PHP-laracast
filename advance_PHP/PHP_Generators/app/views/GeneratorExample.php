@@ -13,12 +13,12 @@ class GeneratorExample
   }
   public function index()
   {
-    // foreach ($this->ticketModel->all() as $tickets) {
-    //   echo $tickets['id'] . ': ' . substr($tickets['title'], 0, 10) . ' - ' . substr($tickets['description'], 0, 10) . '<br>';
-    // }
+    foreach ($this->ticketModel->all() as $tickets) {
+      echo $tickets['id'] . ': ' . substr($tickets['title'], 0, 10) . ' - ' . substr($tickets['description'], 0, 10) . '<br>';
+    }
 
-    echo '<pre>';
+    // echo '<pre>';
 
-    print_r($this->ticketModel->all());
+    // print_r($this->ticketModel->all());
   }
 }
