@@ -3,34 +3,22 @@
 
 namespace App\Views;
 
+use App\Models\Ticket;
 use Generator;
 
 class GeneratorExample
 {
+  public function __construct(private Ticket $ticketModel)
+  {
+  }
   public function index()
   {
-    $numbers = $this->lazyRange(1, 1000);
+    // foreach ($this->ticketModel->all() as $tickets) {
+    //   echo $tickets['id'] . ': ' . substr($tickets['title'], 0, 10) . ' - ' . substr($tickets['description'], 0, 10) . '<br>';
+    // }
 
-    echo $numbers->current();
-    $numbers->next();
-    echo $numbers->current();
-    $numbers->next();
+    echo '<pre>';
 
-    echo $numbers->getReturn();
-  }
-
-
-  private function lazyRange(int $start, int $end): Generator
-  {
-    echo 'Hello';
-    for ($i = $start; $i <= $end; $i++) {
-      yield $start;
-
-      echo 'World';
-
-      yield $end;
-
-      return '!';
-    }
+    print_r($this->ticketModel->all());
   }
 }
