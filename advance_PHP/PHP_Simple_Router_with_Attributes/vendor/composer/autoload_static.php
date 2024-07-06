@@ -12,6 +12,7 @@ class ComposerStaticInite875ae8441d070d7dda5f4b47a2117aa
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
         'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
+        'd115ff7cf3d2e787bd1ede7588749a8a' => __DIR__ . '/../..' . '/app/controllers/Attributes/Route.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -116,6 +117,7 @@ class ComposerStaticInite875ae8441d070d7dda5f4b47a2117aa
     public static $classMap = array (
         'App\\App' => __DIR__ . '/../..' . '/app/App.php',
         'App\\Config' => __DIR__ . '/../..' . '/app/Config.php',
+        'App\\Controllers\\GeneratorExampleController' => __DIR__ . '/../..' . '/app/controllers/GeneratorExampleController.php',
         'App\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/controllers/HomeController.php',
         'App\\Controllers\\InvoiceController' => __DIR__ . '/../..' . '/app/controllers/InvoiceController.php',
         'App\\Controllers\\Router' => __DIR__ . '/../..' . '/app/controllers/Router.php',
@@ -125,10 +127,14 @@ class ComposerStaticInite875ae8441d070d7dda5f4b47a2117aa
         'App\\Model' => __DIR__ . '/../..' . '/app/Model.php',
         'App\\Models\\Invoice' => __DIR__ . '/../..' . '/app/models/Invoice.php',
         'App\\Models\\SignUp' => __DIR__ . '/../..' . '/app/models/SignUp.php',
+        'App\\Models\\Ticket' => __DIR__ . '/../..' . '/app/models/Ticket.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/models/User.php',
+        'App\\Services\\Container' => __DIR__ . '/../..' . '/app/Services/Container.php',
         'App\\Services\\EmailService' => __DIR__ . '/../..' . '/app/Services/EmailService.php',
         'App\\Services\\InvoiceService' => __DIR__ . '/../..' . '/app/Services/InvoiceService.php',
+        'App\\Services\\PaddlePayment' => __DIR__ . '/../..' . '/app/Services/PaddlePayment.php',
         'App\\Services\\PaymentGatewayService' => __DIR__ . '/../..' . '/app/Services/PaymentGatewayService.php',
+        'App\\Services\\PaymentGatewayServiceInterface' => __DIR__ . '/../..' . '/app/Services/PaymentGatewayServiceInterface.php',
         'App\\Services\\SalesTaxService' => __DIR__ . '/../..' . '/app/Services/SalesTaxService.php',
         'App\\Views\\View' => __DIR__ . '/../..' . '/app/views/View.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',

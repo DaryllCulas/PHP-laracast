@@ -31,6 +31,12 @@ $routerObj->registerRoutesFromControllerAttributes(
   ]
 );
 
+
+echo '<pre>';
+print_r($routerObj->routes());
+echo '</pre>';
+
+
 // $routerObj->get('/', [\App\Controllers\HomeController::class, 'index'])
 //   ->post('/upload', [\App\Controllers\HomeController::class, 'upload'])
 //   ->get('/invoice', [\App\Controllers\InvoiceController::class, 'index'])

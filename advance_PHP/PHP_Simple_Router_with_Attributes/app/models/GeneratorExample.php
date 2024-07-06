@@ -3,14 +3,17 @@
 
 namespace App\Views;
 
+
 use App\Models\Ticket;
 use Generator;
 
 class GeneratorExample
 {
+
   public function __construct(private Ticket $ticketModel)
   {
   }
+
   public function index()
   {
     foreach ($this->ticketModel->all() as $tickets) {

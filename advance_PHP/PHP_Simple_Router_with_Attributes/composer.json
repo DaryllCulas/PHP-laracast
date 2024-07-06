@@ -20,7 +20,10 @@
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests/"
-        }
+        },
+        "files": [
+            "app/controllers/Attributes/Route.php"
+          ]
     },
     "config": {
         "optimize-autoloader": true

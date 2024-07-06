@@ -31,8 +31,8 @@ class HomeController
     $db = App::db();
     var_dump($db);
 
-    $userEmail = 'TanjiroKamado@gmail.com';
-    $full_name = 'Tanjiro Kamado';
+    $userEmail = 'TengenUsui@gmail.com';
+    $full_name = 'Tengen Usui';
     $amount = 25;
 
     $userModel = new User();
@@ -64,5 +64,15 @@ class HomeController
     echo '<pre>';
     var_dump(pathinfo($filePath));
     echo '</pre>';
+  }
+
+  #[Route('/', 'post')]
+  public function store()
+  {
+  }
+
+  #[Route('/', 'put')]
+  public function update()
+  {
   }
 }
