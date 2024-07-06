@@ -5,13 +5,17 @@ declare(strict_types=1);
 namespace App\Controllers;
 
 use App\App;
-use App\Attributes\Route;
+
+use App\Controllers\Attributes\Get;
+use App\Controllers\Attributes\Post;
+use App\Controllers\Attributes\Put;
 use App\Models\Invoice;
 use App\Models\SignUp;
 use App\Models\User;
 use App\Services\Container;
 use App\Services\InvoiceService;
 use App\Views\View;
+
 
 
 
@@ -22,7 +26,7 @@ class HomeController
   {
   }
 
-  #[Route('/')]
+  #[Get('/')]
   public function index(): View
   {
     $this->invoiceService->process([], 25);
@@ -31,8 +35,8 @@ class HomeController
     $db = App::db();
     var_dump($db);
 
-    $userEmail = 'TengenUsui@gmail.com';
-    $full_name = 'Tengen Usui';
+    $userEmail = 'MuzanUbayashiki@gmail.com';
+    $full_name = 'Muzan Ubayashiki';
     $amount = 25;
 
     $userModel = new User();
@@ -66,12 +70,12 @@ class HomeController
     echo '</pre>';
   }
 
-  #[Route('/', 'post')]
+  #[Post('/')]
   public function store()
   {
   }
 
-  #[Route('/', 'put')]
+  #[Put('/')]
   public function update()
   {
   }

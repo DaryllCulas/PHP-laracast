@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
-use App\Attributes\Route;
+use App\Controllers\Attributes\Route;
 use App\Exceptions\RouteNotFoundException;
 use App\Services\Container;
 use ReflectionClass;
@@ -26,7 +26,7 @@ class Router
       $reflectionController = new ReflectionClass($controller);
 
       foreach ($reflectionController->getMethods() as $method) {
-        $attributes = $method->getAttributes(Route::class);
+        $attributes = $method->getAttributes(Route::class, \ReflectionAttribute::IS_INSTANCEOF);
 
 
         foreach ($attributes as $attribute) {

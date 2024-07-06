@@ -117,6 +117,11 @@ class ComposerStaticInite875ae8441d070d7dda5f4b47a2117aa
     public static $classMap = array (
         'App\\App' => __DIR__ . '/../..' . '/app/App.php',
         'App\\Config' => __DIR__ . '/../..' . '/app/Config.php',
+        'App\\Controllers\\Attributes\\Get' => __DIR__ . '/../..' . '/app/controllers/Attributes/Get.php',
+        'App\\Controllers\\Attributes\\Post' => __DIR__ . '/../..' . '/app/controllers/Attributes/Post.php',
+        'App\\Controllers\\Attributes\\Put' => __DIR__ . '/../..' . '/app/controllers/Attributes/Put.php',
+        'App\\Controllers\\Attributes\\Route' => __DIR__ . '/../..' . '/app/controllers/Attributes/Route.php',
+        'App\\Controllers\\Attributes\\RouteInterface' => __DIR__ . '/../..' . '/app/controllers/Attributes/RouteInterface.php',
         'App\\Controllers\\GeneratorExampleController' => __DIR__ . '/../..' . '/app/controllers/GeneratorExampleController.php',
         'App\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/controllers/HomeController.php',
         'App\\Controllers\\InvoiceController' => __DIR__ . '/../..' . '/app/controllers/InvoiceController.php',

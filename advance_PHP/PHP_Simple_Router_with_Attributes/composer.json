@@ -15,6 +15,7 @@
         "App\\Models\\": "app/models/",
         "App\\Views\\": "app/views/",
         "App\\Exceptions\\": "app/Exceptions/"
+       
     }
 },
     "autoload-dev": {
