@@ -1,5 +1,7 @@
 <?php
 
+
+use App\Controllers\HomeController;
 use App\Services\Container;
 
 
@@ -7,6 +9,7 @@ require_once(__DIR__ . '/../vendor/autoload.php');
 
 use App\App;
 use App\Config;
+use App\Controllers\GeneratorExampleController;
 use App\Controllers\Router;
 
 
@@ -25,8 +28,8 @@ $routerObj = new Router($container);
 
 $routerObj->registerRoutesFromControllerAttributes(
   [
-    \App\Controllers\HomeController::class,
-    \App\Controllers\GeneratorExampleController::class
+    HomeController::class,
+    GeneratorExampleController::class
 
   ]
 );

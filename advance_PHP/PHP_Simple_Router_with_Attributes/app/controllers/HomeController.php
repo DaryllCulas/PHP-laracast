@@ -35,8 +35,8 @@ class HomeController
     $db = App::db();
     var_dump($db);
 
-    $userEmail = 'MuzanUbayashiki@gmail.com';
-    $full_name = 'Muzan Ubayashiki';
+    $userEmail = 'SanemiHashira@gmail.com';
+    $full_name = 'Sanemi Hashira';
     $amount = 25;
 
     $userModel = new User();

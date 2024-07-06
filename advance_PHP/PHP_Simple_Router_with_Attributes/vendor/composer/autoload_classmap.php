@@ -32,6 +32,7 @@ return array(
     'App\\Services\\PaymentGatewayService' => $baseDir . '/app/Services/PaymentGatewayService.php',
     'App\\Services\\PaymentGatewayServiceInterface' => $baseDir . '/app/Services/PaymentGatewayServiceInterface.php',
     'App\\Services\\SalesTaxService' => $baseDir . '/app/Services/SalesTaxService.php',
+    'App\\Views\\GeneratorExample' => $baseDir . '/app/views/GeneratorExample.php',
     'App\\Views\\View' => $baseDir . '/app/views/View.php',
     'Attribute' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',

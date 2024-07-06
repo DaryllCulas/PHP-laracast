@@ -5,7 +5,6 @@ namespace App\Views;
 
 
 use App\Models\Ticket;
-use Generator;
 
 class GeneratorExample
 {

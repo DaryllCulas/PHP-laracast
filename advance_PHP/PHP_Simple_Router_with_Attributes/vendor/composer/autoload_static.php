@@ -141,6 +141,7 @@ class ComposerStaticInite875ae8441d070d7dda5f4b47a2117aa
         'App\\Services\\PaymentGatewayService' => __DIR__ . '/../..' . '/app/Services/PaymentGatewayService.php',
         'App\\Services\\PaymentGatewayServiceInterface' => __DIR__ . '/../..' . '/app/Services/PaymentGatewayServiceInterface.php',
         'App\\Services\\SalesTaxService' => __DIR__ . '/../..' . '/app/Services/SalesTaxService.php',
+        'App\\Views\\GeneratorExample' => __DIR__ . '/../..' . '/app/views/GeneratorExample.php',
         'App\\Views\\View' => __DIR__ . '/../..' . '/app/views/View.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
