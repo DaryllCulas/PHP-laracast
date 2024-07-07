@@ -10,6 +10,7 @@ require_once(__DIR__ . '/../vendor/autoload.php');
 use App\App;
 use App\Config;
 use App\Controllers\GeneratorExampleController;
+use App\Controllers\InvoiceController;
 use App\Controllers\Router;
 
 
@@ -29,15 +30,16 @@ $routerObj = new Router($container);
 $routerObj->registerRoutesFromControllerAttributes(
   [
     HomeController::class,
-    GeneratorExampleController::class
+    GeneratorExampleController::class,
+    InvoiceController::class
 
   ]
 );
 
 
-echo '<pre>';
-print_r($routerObj->routes());
-echo '</pre>';
+// echo '<pre>';
+// print_r($routerObj->routes());
+// echo '</pre>';
 
 
 // $routerObj->get('/', [\App\Controllers\HomeController::class, 'index'])

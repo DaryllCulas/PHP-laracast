@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Enums\InvoiceStatus;
 use App\Model;
+use PDO;
 
 class Invoice extends Model
 {
@@ -29,9 +31,29 @@ class Invoice extends Model
           WHERE invoice_id = ?'
     );
 
+
     $stmt->execute([$invoiceId]);
     $invoice = $stmt->fetch();
 
     return $invoice ? $invoice : null;
+  }
+
+
+  public function all(InvoiceStatus $status): array
+  {
+    // if (!in_array($status, InvoiceStatus::all())) {
+    //   throw new \RuntimeException('Invalid status [' . $status . '].');
+    // }
+
+
+    $stmt = $this->db->prepare(
+      'SELECT id,  invoiceNumber, amount, status
+      FROM invoices_table
+      WHERE status = ?'
+    );
+
+
+    $stmt->execute([$status->value]);
+    return $stmt->fetchAll(PDO::FETCH_OBJ);
   }
 }
