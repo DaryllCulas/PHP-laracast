@@ -18,7 +18,7 @@ class InvoiceController
     // var_dump($_SESSION);
 
 
-    $invoices = (new Invoice())->all(InvoiceStatus::PENDING);
+    $invoices = (new Invoice())->all(InvoiceStatus::PAID);
     return View::make('invoices/index.views', ['invoices' => $invoices]);;
   }
 
