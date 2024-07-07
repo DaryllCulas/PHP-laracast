@@ -41,9 +41,7 @@ class Invoice extends Model
 
   public function all(InvoiceStatus $status): array
   {
-    // if (!in_array($status, InvoiceStatus::all())) {
-    //   throw new \RuntimeException('Invalid status [' . $status . '].');
-    // }
+
 
 
     $stmt = $this->db->prepare(
