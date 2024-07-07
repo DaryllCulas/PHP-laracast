@@ -12,20 +12,23 @@ enum InvoiceStatus: int
   case FAILED = 4;
 
 
-  // public const PENDING = 1;
-  // public const PAID = 2;
-  // public const VOID =  3;
-  // public const FAILED = 4;
+  public function toString(): string
+  {
+    return match ($this) {
+      default => 'Pending',
+      self::PAID => 'Paid',
+      self::VOID => 'Void',
+      self::FAILED => 'Failed',
+    };
+  }
 
-
-  // public static function all(): array
-  // {
-  //   return [
-  //     self::PENDING,
-  //     self::PAID,
-  //     self::VOID,
-  //     self::FAILED
-
-  //   ];
-  // }
+  public function color(): string
+  {
+    return match ($this) {
+      default => 'orange',
+      self::PAID => 'green',
+      self::VOID => 'gray',
+      self::FAILED => 'red',
+    };
+  }
 }
