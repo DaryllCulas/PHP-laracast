@@ -36,6 +36,7 @@ $routerObj->registerRoutesFromControllerAttributes(
   ]
 );
 
+phpinfo();
 
 // echo '<pre>';
 // print_r($routerObj->routes());
