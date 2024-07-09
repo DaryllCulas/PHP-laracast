@@ -9,6 +9,7 @@ use App\App;
 use App\Controllers\Attributes\Get;
 use App\Controllers\Attributes\Post;
 use App\Controllers\Attributes\Put;
+use App\Enums\HttpMethod;
 use App\Models\Invoice;
 use App\Models\SignUp;
 use App\Models\User;
@@ -27,7 +28,7 @@ class HomeController
   }
 
   #[Get('/')]
-  #[Get('/home')]
+  #[Get('/home', HttpMethod::Get)]
   public function index(): View
   {
     $this->invoiceService->process([], 25);
@@ -71,12 +72,12 @@ class HomeController
     echo '</pre>';
   }
 
-  #[Post('/')]
+  #[Post('/', HttpMethod::Post)]
   public function store()
   {
   }
 
-  #[Put('/')]
+  #[Put('/', HttpMethod::Put)]
   public function update()
   {
   }
