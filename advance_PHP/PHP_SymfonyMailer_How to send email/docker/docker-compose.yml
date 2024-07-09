@@ -30,7 +30,7 @@ services:
     ports:
       - "3306:3306"
   mailhog:
-    container_name: programwithgio-mailhog
+    container_name: PHPServer-mailhog
     image: mailhog/mailhog
     restart: always
     logging:
