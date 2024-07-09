@@ -12,8 +12,7 @@ use App\Config;
 use App\Controllers\GeneratorExampleController;
 use App\Controllers\InvoiceController;
 use App\Controllers\Router;
-
-
+use App\Controllers\UserController;
 
 session_start();
 
@@ -31,12 +30,16 @@ $routerObj->registerRoutesFromControllerAttributes(
   [
     HomeController::class,
     GeneratorExampleController::class,
-    InvoiceController::class
+    InvoiceController::class,
+    UserController::class
 
   ]
 );
 
-phpinfo();
+
+
+
+
 
 // echo '<pre>';
 // print_r($routerObj->routes());
