@@ -23,7 +23,6 @@ class ComposerStaticInit8162b5eba91a0fa08f928178f836d129
         '\\' => 
         array (
             '\\Tests\\' => 7,
-            '\\App\\' => 5,
         ),
         'S' => 
         array (
@@ -68,16 +67,16 @@ class ComposerStaticInit8162b5eba91a0fa08f928178f836d129
             'Composer\\CaBundle\\' => 18,
             'Composer\\' => 9,
         ),
+        'A' => 
+        array (
+            'App\\' => 4,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
         '\\Tests\\' => 
         array (
             0 => __DIR__ . '/../..' . '/tests',
-        ),
-        '\\App\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/App',
         ),
         'Symfony\\Polyfill\\Php81\\' => 
         array (
@@ -190,6 +189,10 @@ class ComposerStaticInit8162b5eba91a0fa08f928178f836d129
         'Composer\\' => 
         array (
             0 => __DIR__ . '/..' . '/composer/composer/src/Composer',
+        ),
+        'App\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/App',
         ),
     );
 

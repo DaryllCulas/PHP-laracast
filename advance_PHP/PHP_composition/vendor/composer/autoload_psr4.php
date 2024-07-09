@@ -7,7 +7,6 @@ $baseDir = dirname($vendorDir);
 
 return array(
     '\\Tests\\' => array($baseDir . '/tests'),
-    '\\App\\' => array($baseDir . '/App'),
     'Symfony\\Polyfill\\Php81\\' => array($vendorDir . '/symfony/polyfill-php81'),
     'Symfony\\Polyfill\\Php80\\' => array($vendorDir . '/symfony/polyfill-php80'),
     'Symfony\\Polyfill\\Php73\\' => array($vendorDir . '/symfony/polyfill-php73'),
@@ -36,4 +35,5 @@ return array(
     'Composer\\ClassMapGenerator\\' => array($vendorDir . '/composer/class-map-generator/src'),
     'Composer\\CaBundle\\' => array($vendorDir . '/composer/ca-bundle/src'),
     'Composer\\' => array($vendorDir . '/composer/composer/src/Composer'),
+    'App\\' => array($baseDir . '/App'),
 );
