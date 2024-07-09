@@ -43,11 +43,16 @@ class UserController
 
     HTMLBody;
 
-    $email = (new Email())->from('support@example.com')->to($email)->subject('Welcome')->text($text)->html($html);
+    $email = (new Email())->from('support@example.com')
+      ->to($email)
+      ->subject('Welcome')
+      ->attach('Hello World', 'welcome.txt')
+      ->text($text)
+      ->html($html);
 
-    $dsn = 'smtp://mailhog:1025';
 
-    $transport = Transport::fromDsn($dsn);
+
+    $transport = Transport::fromDsn($_ENV['MAILER_DSN']);
 
     $mailer = new Mailer($transport);
 
