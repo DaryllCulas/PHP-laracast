@@ -17,7 +17,8 @@ class UserController
 
   public function create(): View
   {
-    return View::make('users/registrar');
+
+    return View::make('Register');
   }
 
   #[Post('/users')]
@@ -33,9 +34,18 @@ class UserController
     Thank you for signing up
     Body;
 
-    $email = (new Email())->from('support@example.com')->to($email)->subject('Thanks for signing up')->text($text);
+    $html = <<<HTMLBody
+    <h1 style="text-align: center; color: blue">Welcome</h1>
+    Hello $firstname,
+    <br /><br />
 
-    $dsn = 'smtp://user:pass@smtp.example.com:25';
+    Thank you for signing up
+
+    HTMLBody;
+
+    $email = (new Email())->from('support@example.com')->to($email)->subject('Welcome')->text($text)->html($html);
+
+    $dsn = 'smtp://mailhog:1025';
 
     $transport = Transport::fromDsn($dsn);
 
