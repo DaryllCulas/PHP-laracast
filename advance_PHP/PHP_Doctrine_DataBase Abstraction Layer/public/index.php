@@ -21,7 +21,13 @@ $connectionParams = [
 ];
 $conn = DriverManager::getConnection($connectionParams);
 
-$stmt = $conn->prepare('SELECT * FROM Ticket WHERE id = :id');
-$stmt->bindValue(':id', 100);
+$stmt = $conn->prepare('SELECT * FROM Ticket WHERE created_at BETWEEN :from AND :to');
+$from = new DateTime('2019-01-01');
+$to = new DateTime('2019-02-01');
+
+$stmt->bindValue(':from', $from, 'datetime');
+$stmt->bindValue(':to', $to, 'datetime');
+
+// $stmt->bindValue(':id', 100);
 $result = $stmt->executeQuery();
 var_dump($result->fetchAssociative());
