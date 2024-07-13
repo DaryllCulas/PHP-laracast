@@ -3,7 +3,7 @@
         'name' => 'your-namespace/php_unit_testing',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '65f757cfee7036a38f8fe62a49591b24f63d7585',
+        'reference' => '645d2897fa14da898331159096f98a1202607ca9',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -346,7 +346,7 @@
         'your-namespace/php_unit_testing' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '65f757cfee7036a38f8fe62a49591b24f63d7585',
+            'reference' => '645d2897fa14da898331159096f98a1202607ca9',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
