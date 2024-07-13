@@ -4,30 +4,64 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Homepage</title>
+  <title>Invoice</title>
 </head>
+<table>
 
-<body>
-  <h1><?= $pageName ?></h1>
-  <form action="/upload" method="post" enctype="multipart/form-data">
-    <input type="file" name="receipt" />
-    <button type="submit">Upload</button>
-  </form>
-  <hr />
-  <div>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: center;
+    }
 
-    <?php if (!empty($invoice)) : ?>
-      Invoice ID: <?= htmlspecialchars($invoice['invoice_id'], ENT_QUOTES) ?>
-      <br />
-      Invoice amount: <?= htmlspecialchars($invoice['amount'], ENT_QUOTES) ?>
-      <br />
-      User: <?= htmlspecialchars($invoice['full_name'], ENT_QUOTES)  ?>
-    <?php endif ?>
+    table tr th,
+    table tr td {
+      border: 1px #eee solid;
+      padding: 5px;
+    }
 
+    .color-green {
+      color: green;
+    }
 
-  </div>
+    .color-red {
+      color: red;
+    }
 
+    .color-gray {
+      color: gray;
+    }
 
-</body>
+    .color-orange {
+      color: orange;
+    }
+  </style>
+
+  <body>
+    <h1>Invoices</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Invoice Number</th>
+          <th>Amount</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php foreach ($invoices as $invoice) : ?>
+          <tr>
+            <td><?= $invoice['id'] ?></td>
+            <td><?= $invoice['invoiceNumber'] ?></td>
+            <td><?= number_format($invoice['amount']) ?></td>
+            <td class="color-<?= \App\Enums\InvoiceStatus::tryFrom($invoice['status'] ?? null)->color() ?>">
+              <?= \App\Enums\InvoiceStatus::tryFrom($invoice['status'] ?? null)->toString() ?></td>
+          </tr>
+        <?php endforeach ?>
+      </tbody>
+
+    </table>
+  </body>
 
 </html>
