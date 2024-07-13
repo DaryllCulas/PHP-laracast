@@ -1,41 +1,42 @@
 <?php
 
+declare(strict_types=1);
 
-use Doctrine\DBAL\DriverManager;
-use Doctrine\DBAL\Connection;
-
+use App\App;
+use App\Config;
+use App\Controllers\GeneratorExampleController;
+use App\Controllers\HomeController;
+use App\Controllers\InvoiceController;
+use App\Controllers\Router;
+use App\Services\Container;
 
 
 require_once(__DIR__ . '/../vendor/autoload.php');
-
-
-
 
 session_start();
 
 $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
 $dotenv->load();
 
-$connectionParams = [
-  'dbname' => $_ENV['DB_DATABASE'],
-  'user' => $_ENV['DB_USER'],
-  'host' => $_ENV['DB_HOST'],
-  'driver' => $_ENV['DB_DRIVER'] ?? 'pdo_mysql',
-];
-$conn = DriverManager::getConnection($connectionParams);
+define('STORAGE_PATH', __DIR__ . '/../storage');
+define('VIEW_PATH', __DIR__ . '/../app/views');
 
-// $stmt = $conn->prepare('SELECT * FROM Ticket WHERE created_at BETWEEN :from AND :to');
-// $from = new DateTime('2019-01-01');
-// $to = new DateTime('2019-02-01');
+$container = new Container();
+$routerObj = new Router($container);
 
-// $stmt->bindValue(':from', $from, 'datetime');
-// $stmt->bindValue(':to', $to, 'datetime');
+$routerObj->registerRoutesFromControllerAttributes(
+  [
+    HomeController::class,
+    GeneratorExampleController::class,
+    InvoiceController::class
 
-// // $stmt->bindValue(':id', 100);
-// $result = $stmt->executeQuery();
-// var_dump($result->fetchAssociative());
+  ]
+);
 
 
-$ids = [1, 2, 3];
-$result = $conn->executeQuery('SELECT id, created_at FROM Ticket WHERE id IN (:ids)', ['ids' => $ids], ['ids' => \Doctrine\DBAL\ParameterType::INTEGER]);
-var_dump($result->fetchAllAssociative());
+(new App(
+  $container,
+  $routerObj,
+  ['uri' => $_SERVER['REQUEST_URI'], 'method' => $_SERVER['REQUEST_METHOD']],
+  new Config($_ENV)
+))->run();
