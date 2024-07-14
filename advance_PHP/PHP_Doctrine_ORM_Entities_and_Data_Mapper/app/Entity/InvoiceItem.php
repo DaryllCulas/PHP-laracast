@@ -38,6 +38,11 @@ class InvoiceItem
   private float $unitPrice;
 
   #[ManyToOne(inversedBy: 'items')]
+
+  /**
+   * @ManyToOne(targetEntity="App\Entity\Invoice", inversedBy="items", cascade={"persist"})
+   */
+
   private Invoice $invoice;
 
 
