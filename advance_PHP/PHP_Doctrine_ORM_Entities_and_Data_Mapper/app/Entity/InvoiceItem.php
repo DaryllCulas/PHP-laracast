@@ -37,7 +37,7 @@ class InvoiceItem
   #[Column(name: 'unit_price', type: Types::DECIMAL, precision: 10, scale: 2)]
   private float $unitPrice;
 
-  #[ManyToOne(inversedBy: 'items')]
+  #[ManyToOne(inversedBy: 'items', cascade: ['persist'])]
 
   /**
    * @ManyToOne(targetEntity="App\Entity\Invoice", inversedBy="items", cascade={"persist"})
