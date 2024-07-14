@@ -37,7 +37,7 @@ class Invoice
   #[Column(name: 'created_at')]
   private DateTime $createdAt;
 
-  #[OneToMany(targetEntity: InvoiceItem::class, mappedBy: 'invoice')]
+  #[OneToMany(targetEntity: InvoiceItem::class, mappedBy: 'invoice', cascade: ['persist', 'remove'])]
   private Collection $items;
 
   public function __construct()
