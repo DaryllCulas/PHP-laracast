@@ -12,6 +12,11 @@ use App\Entity\Invoice;
 use App\Entity\InvoiceItem;
 use App\Enums\InvoiceStatus;
 use App\Services\Container;
+use Doctrine\DBAL\DriverManager;
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\ORMSetup;
+
+
 
 
 require_once(__DIR__ . '/../vendor/autoload.php');
@@ -20,6 +25,18 @@ session_start();
 
 $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
 $dotenv->load();
+
+$params = [
+  'driver' => 'pdo_mysql',
+  'host' => $_ENV['DB_HOST'],
+  'user' => $_ENV['DB_USER'],
+  'dbname' => $_ENV['DB_DATABASE'],
+];
+
+$entityManager = new EntityManager(
+  DriverManager::getConnection($params),
+  ORMSetup::createAttributeMetadataConfiguration([__DIR__ . '/Entity'])
+);
 
 
 $items = [['Item 1', 1, 15], ['Item 2', 2, 7.5], ['Item 3', 4, 3.75]];
@@ -39,7 +56,14 @@ foreach ($items as [$description, $quantity, $unitPrice]) {
     ->setUnitPrice($unitPrice);
 
   $invoice->addItem($item);
+  $entityManager->persist($item);
 }
+
+$entityManager->persist($invoice);
+$entityManager->flush();
+
+
+
 
 
 
