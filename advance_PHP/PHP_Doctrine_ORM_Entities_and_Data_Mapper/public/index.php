@@ -65,6 +65,8 @@ $entityManager->flush();
 
 echo $entityManager->getUnitOfWork()->size();
 
+var_dump($invoice);
+
 
 
 
