@@ -63,6 +63,8 @@ $entityManager->persist($invoice);
 $entityManager->flush();
 
 
+echo $entityManager->getUnitOfWork()->size();
+
 
 
 
