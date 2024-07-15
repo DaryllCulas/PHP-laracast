@@ -46,22 +46,49 @@ $entityManager = new EntityManager(
 
 $queryBuilder = $entityManager->createQueryBuilder();
 
+// Just in case: If there's multiple condition in Where clause, we can use this:
+
+/* Before: 
+
+  WHERE i.amount > :amount AND (i.status = :status OR created_at >= :date) 
+  
+  */
+
+
+
+
+
 $query = $queryBuilder
   ->select('i')
   ->from(Invoice::class, 'i')
   ->where('i.amount > :amount')
+  ->andWhere('i.status = :status')
+  ->orWhere('i.createdAt >= :date')
   ->setParameter('amount', 100)
+  ->setParameter('status', InvoiceStatus::PAID)
+  ->setParameter('date', '2022-01-01')
   ->orderBy('i.createdAt', 'DESC')
   ->getQuery();
 
-// echo $query->getDQL();
+echo $query->getDQL(); // Generate query Doctrine Query Builder
+
+/* After(Generated DQL): 
+
+WHERE (i.amount > :amount AND i.status = :status) OR i.createdAt >= :date ORDER BY i.createdAt DESC
+
+*/
+
+exit;
+
+
 
 $invoices = $query->getResult();
-// var_dump($invoices);
+// $invoices = $query->getArrayResult();
+var_dump($invoices);
 
 
-foreach ($invoices as $invoice) {
-  echo $invoice->getCreatedAt()->format('m/d/Y g:ia')
-    . ' , ' . $invoice->getAmount()
-    . ' , ' . $invoice->getStatus()->toString() . PHP_EOL;
-}
+// foreach ($invoices as $invoice) {
+//   echo $invoice->getCreatedAt()->format('m/d/Y g:ia')
+//     . ' , ' . $invoice->getAmount()
+//     . ' , ' . $invoice->getStatus()->toString() . PHP_EOL;
+// }
