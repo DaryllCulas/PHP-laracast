@@ -55,27 +55,39 @@ $queryBuilder = $entityManager->createQueryBuilder();
   */
 
 
-
-
-
 $query = $queryBuilder
   ->select('i')
   ->from(Invoice::class, 'i')
   ->where('i.amount > :amount')
-  ->andWhere('i.status = :status')
-  ->orWhere('i.createdAt >= :date')
+  ->where(
+    $queryBuilder->expr()->andX(
+      $queryBuilder->expr()->gt('i.amount', ':amount'),
+      $queryBuilder->expr()->orX(
+        $queryBuilder->expr()->eq('i.status', ':status'),
+        $queryBuilder->expr()->gte('i.createdAt', ':date'),
+      )
+    )
+  )
+  // ->andWhere('i.status = :status')
+  // ->orWhere('i.createdAt >= :date')
   ->setParameter('amount', 100)
-  ->setParameter('status', InvoiceStatus::PAID)
+  ->setParameter('status', InvoiceStatus::PAID->value)
   ->setParameter('date', '2022-01-01')
   ->orderBy('i.createdAt', 'DESC')
   ->getQuery();
 
 echo $query->getDQL(); // Generate query Doctrine Query Builder
 
-/* After(Generated DQL): 
+/* After(First DQL Build if using andWhere && orWhere): 
 
-WHERE (i.amount > :amount AND i.status = :status) OR i.createdAt >= :date ORDER BY i.createdAt DESC
+WHERE (i.amount > :amount AND i.status = :status) OR i.createdAt >= :date ORDER BY i.createdAt DESC >>> not identical
 
+*/
+
+/* After(Second DQL Build if using Alternative WHERE clause DQL Builder): 
+
+ WHERE i.amount > :amount AND (i.status = :status OR i.createdAt >= :date) ORDER BY i.createdAt DESC
+ 
 */
 
 exit;
