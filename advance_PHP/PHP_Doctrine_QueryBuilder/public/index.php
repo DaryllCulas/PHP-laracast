@@ -38,45 +38,30 @@ $entityManager = new EntityManager(
   ORMSetup::createAttributeMetadataConfiguration([__DIR__ . '/Entity'])
 );
 
+// $query = $entityManager->createQuery(
+//   'SELECT i.createdAt, i.amount FROM App\Entity\Invoice i WHERE i.amount > :amount ORDER BY i.createdAt DESC'
+// );
+
+// $query->getResult();
 
 $queryBuilder = $entityManager->createQueryBuilder();
 
 $query = $queryBuilder
-  ->select('i.createdAt', 'i.amount')
+  ->select('i')
   ->from(Invoice::class, 'i')
   ->where('i.amount > :amount')
   ->setParameter('amount', 100)
   ->orderBy('i.createdAt', 'DESC')
   ->getQuery();
 
+// echo $query->getDQL();
 
 $invoices = $query->getResult();
-  
+// var_dump($invoices);
 
 
-
-
-
-
-// define('STORAGE_PATH', __DIR__ . '/../storage');
-// define('VIEW_PATH', __DIR__ . '/../app/views');
-
-// $container = new Container();
-// $routerObj = new Router($container);
-
-// $routerObj->registerRoutesFromControllerAttributes(
-//   [
-//     HomeController::class,
-//     GeneratorExampleController::class,
-//     InvoiceController::class
-
-//   ]
-// );
-
-
-// (new App(
-//   $container,
-//   $routerObj,
-//   ['uri' => $_SERVER['REQUEST_URI'], 'method' => $_SERVER['REQUEST_METHOD']],
-//   new Config($_ENV)
-// ))->run();
+foreach ($invoices as $invoice) {
+  echo $invoice->getCreatedAt()->format('m/d/Y g:ia')
+    . ' , ' . $invoice->getAmount()
+    . ' , ' . $invoice->getStatus()->toString() . PHP_EOL;
+}
