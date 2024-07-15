@@ -39,33 +39,19 @@ $entityManager = new EntityManager(
 );
 
 
-$items = [['Item 1', 1, 15], ['Item 2', 2, 7.5], ['Item 3', 4, 3.75]];
+$queryBuilder = $entityManager->createQueryBuilder();
 
-$invoice = (new Invoice())
-  ->setAmount(45)
-  ->setInvoiceNumber('1')
-  ->setStatus(InvoiceStatus::PAID)
-  ->setCreatedAt(new DateTime());
-
-
-
-foreach ($items as [$description, $quantity, $unitPrice]) {
-  $item = (new InvoiceItem())
-    ->setDescription($description)
-    ->setQuantity($quantity)
-    ->setUnitPrice($unitPrice);
-
-  $invoice->addItem($item);
-  $entityManager->persist($item);
-}
-
-$entityManager->persist($invoice);
-$entityManager->flush();
+$query = $queryBuilder
+  ->select('i.createdAt', 'i.amount')
+  ->from(Invoice::class, 'i')
+  ->where('i.amount > :amount')
+  ->setParameter('amount', 100)
+  ->orderBy('i.createdAt', 'DESC')
+  ->getQuery();
 
 
-echo $entityManager->getUnitOfWork()->size();
-
-var_dump($invoice);
+$invoices = $query->getResult();
+  
 
 
 
