@@ -58,7 +58,7 @@ class Invoice
   }
 
 
-  public function setAmount(float $amount): self
+  public function setAmount(float $amount): Invoice
   {
     $this->amount = $amount;
     return $this;
@@ -70,7 +70,7 @@ class Invoice
     return $this->invoiceNumber;
   }
 
-  public function setInvoiceNumber(string $invoiceNumber): self
+  public function setInvoiceNumber(string $invoiceNumber): Invoice
   {
     $this->invoiceNumber = $invoiceNumber;
     return $this;
@@ -83,7 +83,7 @@ class Invoice
   }
 
 
-  public function setStatus(InvoiceStatus $status): self
+  public function setStatus(InvoiceStatus $status): Invoice
   {
     $this->status = $status;
     return $this;
@@ -96,7 +96,7 @@ class Invoice
   }
 
 
-  public function setCreatedAt(DateTime $createdAt): self
+  public function setCreatedAt(DateTime $createdAt): Invoice
   {
     $this->createdAt = $createdAt;
     return $this;
@@ -113,7 +113,7 @@ class Invoice
    * @param \App\Entity\InvoiceItem $item
    * @return \App\Entity\Invoice
    */
-  public function addItem(InvoiceItem $item): self
+  public function addItem(InvoiceItem $item): Invoice
   {
     $item->setInvoice($this);
     $this->items->add($item);

@@ -56,9 +56,9 @@ $queryBuilder = $entityManager->createQueryBuilder();
 
 
 $query = $queryBuilder
-  ->select('i')
+  ->select('i', 'it')
   ->from(Invoice::class, 'i')
-  ->where('i.amount > :amount')
+  ->join('i.items', 'it')
   ->where(
     $queryBuilder->expr()->andX(
       $queryBuilder->expr()->gt('i.amount', ':amount'),
@@ -76,7 +76,7 @@ $query = $queryBuilder
   ->orderBy('i.createdAt', 'DESC')
   ->getQuery();
 
-echo $query->getDQL(); // Generate query Doctrine Query Builder
+// echo $query->getDQL() . PHP_EOL; // Generate query Doctrine Query Builder
 
 /* After(First DQL Build if using andWhere && orWhere): 
 
@@ -90,17 +90,22 @@ WHERE (i.amount > :amount AND i.status = :status) OR i.createdAt >= :date ORDER 
  
 */
 
-exit;
-
-
-
 $invoices = $query->getResult();
-// $invoices = $query->getArrayResult();
-var_dump($invoices);
 
 
-// foreach ($invoices as $invoice) {
-//   echo $invoice->getCreatedAt()->format('m/d/Y g:ia')
-//     . ' , ' . $invoice->getAmount()
-//     . ' , ' . $invoice->getStatus()->toString() . PHP_EOL;
-// }
+// // $invoices = $query->getArrayResult();
+// var_dump($invoices);
+
+/** @var Invoice $invoice */
+
+foreach ($invoices as $invoice) {
+  echo $invoice->getCreatedAt()->format('m/d/Y g:ia')
+    . ' , ' . $invoice->getAmount()
+    . ' , ' . $invoice->getStatus()->toString() . PHP_EOL;
+
+  foreach ($invoice->getItems() as $item) {
+    echo ' - ' . $item->getDescription()
+      . ', ' . $item->getQuantity()
+      . ', ' . $item->getUnitPrice() . PHP_EOL;
+  }
+}

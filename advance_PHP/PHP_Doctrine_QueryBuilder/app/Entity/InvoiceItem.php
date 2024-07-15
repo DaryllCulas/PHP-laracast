@@ -37,11 +37,8 @@ class InvoiceItem
   #[Column(name: 'unit_price', type: Types::DECIMAL, precision: 10, scale: 2)]
   private float $unitPrice;
 
-  #[ManyToOne(inversedBy: 'items', cascade: ['persist'])]
+  #[ManyToOne(inversedBy: 'items')]
 
-  /**
-   * @ManyToOne(targetEntity="App\Entity\Invoice", inversedBy="items", cascade={"persist"})
-   */
 
   private Invoice $invoice;
 
@@ -64,7 +61,7 @@ class InvoiceItem
   }
 
 
-  public function setDescription(string $description): self
+  public function setDescription(string $description): InvoiceItem
   {
     $this->description = $description;
     return $this;
@@ -77,7 +74,7 @@ class InvoiceItem
   }
 
 
-  public function setQuantity(int $quantity): self
+  public function setQuantity(int $quantity): InvoiceItem
   {
     $this->quantity = $quantity;
     return $this;
@@ -89,7 +86,7 @@ class InvoiceItem
   }
 
 
-  public function setUnitPrice(float $unitPrice): self
+  public function setUnitPrice(float $unitPrice): InvoiceItem
   {
     $this->unitPrice = $unitPrice;
     return $this;
@@ -102,7 +99,7 @@ class InvoiceItem
   }
 
 
-  public function setInvoice(Invoice $invoice): self
+  public function setInvoice(Invoice $invoice): InvoiceItem
   {
     $this->invoice = $invoice;
     return $this;
