@@ -15,7 +15,7 @@ class Invoice extends Model
   public function all(InvoiceStatus $status): array
   {
     return $this->db->createQueryBuilder()->select('id', 'invoiceNumber', 'amount', 'status')
-      ->from('invoices_table')
+      ->from('Invoices_Statuses')
       ->where('status = ?')
       ->setParameter(0, $status->value)
       ->fetchAllAssociative();
