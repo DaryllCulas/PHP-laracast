@@ -17,7 +17,7 @@ use Doctrine\ORM\Mapping\OneToMany;
 use Doctrine\ORM\Mapping\Table;
 
 #[Entity]
-#[Table('InvoiceTable2')]
+#[Table('Invoice')]
 
 class Invoice
 {
