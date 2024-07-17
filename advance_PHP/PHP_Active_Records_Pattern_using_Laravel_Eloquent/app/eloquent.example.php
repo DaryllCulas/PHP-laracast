@@ -42,3 +42,9 @@ require __DIR__ . '/../eloquent.php';
 
 $invoiceId = 1;
 Invoice::query()->where('id', $invoiceId)->update(['status' => InvoiceStatus::PAID]);
+
+Invoice::query()->where('status', InvoiceStatus::PAID)->get()->each(function (Invoice $invoice) {
+
+
+  echo 'InvoiceID:' . $invoice->id . ' -> ' . 'Status: ' . $invoice->status->toString() . PHP_EOL;
+});
