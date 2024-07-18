@@ -6,34 +6,32 @@ namespace App;
 
 use App\Config;
 use App\Controllers\Router;
-use App\DB;
 use App\Exceptions\RouteNotFoundException;
-use App\Services\Container;
-use App\Services\PaddlePayment;
-use App\Services\PaymentGatewayService;
-use App\Services\PaymentGatewayServiceInterface;
 use App\Views\View;
 use Dotenv\Dotenv;
+use Illuminate\Container\Container;
+use Illuminate\Database\Capsule\Manager as Capsule;
+use Illuminate\Events\Dispatcher;
 
 class App
 {
-  private static DB $db;
-  // public static Container $container;
+
 
   public function __construct(protected Container $container, protected Router $routerObj, protected array $request, protected Config $config)
   {
-    static::$db = new DB($config->db ?? []);
-
-    // $this->container->set(PaymentGatewayServiceInterface::class, fn (Container $c) => $c->get(PaymentGatewayService::class));
-
-    // $this->container->set(PaymentGatewayServiceInterface::class, PaymentGatewayService::class);
-    $this->container->set(PaymentGatewayServiceInterface::class, PaddlePayment::class);
   }
 
-  public static function db(): DB
+  public function initDb(array $config)
   {
-    return static::$db;
+
+    $capsule = new Capsule;
+
+    $capsule->addConnection($config);
+    $capsule->setEventDispatcher(new Dispatcher());
+    $capsule->setAsGlobal();
+    $capsule->bootEloquent();
   }
+
 
 
   public function boot(): static
@@ -42,7 +40,7 @@ class App
     $dotenv->load();
 
     $this->config = new Config($_ENV);
-    static::$db = new DB($this->config->db ?? []);
+    $this->initDb($this->config->db);
 
     return $this;
   }
