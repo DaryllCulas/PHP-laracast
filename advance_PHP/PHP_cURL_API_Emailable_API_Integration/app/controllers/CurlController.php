@@ -13,7 +13,7 @@ class CurlController
   public function index()
   {
     $handle = curl_init();
-    $url = 'https://example.com';
+    $url = 'https://api.emailable.com/v1/verify?email=culasdaryll99@gmail.com&api_key=test_9161e57f43a0ba1719de';
 
     // set options
     curl_setopt($handle, CURLOPT_URL, $url);
@@ -28,8 +28,12 @@ class CurlController
     // get content
     $content = curl_exec($handle);
 
-    var_dump(curl_getinfo($handle));
 
-    // echo strlen($content);
+    if ($content !== false) {
+      $data = json_decode($content, true);
+
+      echo '<pre>';
+      print_r($data);
+    }
   }
 }
