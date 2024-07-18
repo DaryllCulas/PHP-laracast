@@ -14,11 +14,8 @@ class InvoiceController
   #[Get('/invoices')]
   public function index(): View
   {
-    unset($_SESSION['count']);
-    // var_dump($_SESSION);
 
-
-    $invoices = (new Invoice())->all(InvoiceStatus::PAID);
+    $invoices = Invoice::query()->where('status', InvoiceStatus::FAILED)->get()->toArray();
     return View::make('invoices/index.views', ['invoices' => $invoices]);;
   }
 
