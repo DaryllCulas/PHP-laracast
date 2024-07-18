@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use App\App;
 use App\Config;
+use App\Controllers\CurlController;
 use App\Controllers\GeneratorExampleController;
 use App\Controllers\HomeController;
 use App\Controllers\InvoiceController;
@@ -32,7 +33,8 @@ $routerObj->registerRoutesFromControllerAttributes(
   [
     HomeController::class,
     GeneratorExampleController::class,
-    InvoiceController::class
+    InvoiceController::class,
+    CurlController::class
   ]
 );
 
