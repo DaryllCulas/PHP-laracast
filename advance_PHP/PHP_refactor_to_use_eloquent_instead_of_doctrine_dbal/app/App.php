@@ -27,7 +27,7 @@ class App
     $capsule = new Capsule;
 
     $capsule->addConnection($config);
-    $capsule->setEventDispatcher(new Dispatcher());
+    $capsule->setEventDispatcher(new Dispatcher($this->container));
     $capsule->setAsGlobal();
     $capsule->bootEloquent();
   }
