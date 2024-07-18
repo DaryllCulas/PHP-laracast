@@ -8,13 +8,9 @@ use App\Controllers\GeneratorExampleController;
 use App\Controllers\HomeController;
 use App\Controllers\InvoiceController;
 use App\Controllers\Router;
-use App\Entity\Invoice;
-use App\Entity\InvoiceItem;
-use App\Enums\InvoiceStatus;
-use App\Services\Container;
-use Doctrine\DBAL\DriverManager;
-use Doctrine\ORM\EntityManager;
-use Doctrine\ORM\ORMSetup;
+use Illuminate\Container\Container;
+
+
 
 
 require_once(__DIR__ . '/../vendor/autoload.php');
