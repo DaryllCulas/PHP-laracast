@@ -13,7 +13,16 @@ class CurlController
   public function index()
   {
     $handle = curl_init();
-    $url = 'https://api.emailable.com/v1/verify?email=culasdaryll99@gmail.com&api_key=test_9161e57f43a0ba1719de';
+    $apiKey = $_ENV['EMAILABLE_API_KEY'];
+    $email = 'culasdaryll99@gmail.com';
+
+    $params = [
+      'api_key' => $apiKey,
+      'email' => $email
+
+    ];
+
+    $url = 'https://api.emailable.com/v1/verify?' . http_build_query($params);
 
     // set options
     curl_setopt($handle, CURLOPT_URL, $url);
@@ -28,7 +37,7 @@ class CurlController
     // get content
     $content = curl_exec($handle);
 
-
+    // check if content is false
     if ($content !== false) {
       $data = json_decode($content, true);
 
