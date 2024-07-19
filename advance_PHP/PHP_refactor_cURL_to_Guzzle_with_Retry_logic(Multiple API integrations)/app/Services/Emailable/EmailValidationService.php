@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Services\Emailable;
 
 
+use App\Contracts\EmailValidationInterface;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\HandlerStack;
@@ -13,7 +14,7 @@ use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
 
-class EmailValidationService
+class EmailValidationService implements EmailValidationInterface
 {
   private string $baseUrl = 'https://api.emailable.com/v1/';
 
