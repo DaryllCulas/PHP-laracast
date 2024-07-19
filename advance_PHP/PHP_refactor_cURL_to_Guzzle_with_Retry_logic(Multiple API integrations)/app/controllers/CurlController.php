@@ -22,7 +22,7 @@ class CurlController
     $result = $this->emailValidationService->verify($email);
 
     echo '<pre>';
-    print($result);
+    print_r($result);
     echo '</pre>';
   }
 }
