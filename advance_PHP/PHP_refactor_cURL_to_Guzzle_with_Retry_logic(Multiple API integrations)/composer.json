@@ -9,7 +9,8 @@
         "symfony/cache": "^7.1",
         "doctrine/migrations": "^3.8",
         "illuminate/database": "^11.16",
-        "illuminate/events": "^11.16"
+        "illuminate/events": "^11.16",
+        "guzzlehttp/guzzle": "^7.9"
     },
     "require-dev": {
         "phpunit/phpunit": "^11.2"
