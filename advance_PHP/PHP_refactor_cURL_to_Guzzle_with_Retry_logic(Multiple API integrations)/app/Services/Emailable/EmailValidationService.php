@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace App\Services\Emailable;
 
+use GuzzleHttp\Client;
+
 class EmailValidationService
 {
-  private string $baseUrl = 'https://api.emailable.com/v1/verify?';
+  private string $baseUrl = 'https://api.emailable.com/v1/';
 
   public function __construct(private string $apiKey)
   {
@@ -14,8 +16,12 @@ class EmailValidationService
 
   public function verify(string $email): array
   {
-    $handle = curl_init();
-
+    $client = new Client(
+      [
+        'base_uri' => $this->baseUrl,
+        'timeout' => 5
+      ]
+    );
 
 
     $params = [
@@ -24,25 +30,8 @@ class EmailValidationService
 
     ];
 
-    $url = $this->baseUrl . http_build_query($params);
+    $response = $client->get('verify', ['query' => $params]);
 
-    // set options
-    curl_setopt($handle, CURLOPT_URL, $url);
-
-    // set return transfer
-    curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
-
-
-    // execute
-    curl_exec($handle);
-
-    // get content
-    $content = curl_exec($handle);
-
-    // check if content is false
-    if ($content !== false) {
-      return json_decode($content, true);
-    }
-    return [];
+    return json_decode($response->getBody()->getContents(), true);
   }
 }
