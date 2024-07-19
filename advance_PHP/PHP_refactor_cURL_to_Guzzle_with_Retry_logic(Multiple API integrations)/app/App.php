@@ -7,6 +7,7 @@ namespace App;
 use App\Config;
 use App\Controllers\Router;
 use App\Exceptions\RouteNotFoundException;
+use App\Services\Emailable\EmailValidationService;
 use App\Views\View;
 use Dotenv\Dotenv;
 use Illuminate\Container\Container;
@@ -42,6 +43,8 @@ class App
     $this->config = new Config($_ENV);
     $this->initDb($this->config->db);
 
+
+    $this->container->bind(EmailValidationService::class, fn () => new EmailValidationService($this->config->apiKeys['emailable']));
     return $this;
   }
 
