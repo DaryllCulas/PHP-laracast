@@ -5,9 +5,11 @@ declare(strict_types=1);
 namespace App;
 
 use App\Config;
+use App\Contracts\EmailValidationInterface;
 use App\Controllers\Router;
 use App\Exceptions\RouteNotFoundException;
-use App\Services\Emailable\EmailValidationService;
+// use App\Services\Emailable\EmailValidationService;
+use App\Services\AbstractAPI\EmailValidationService;
 use App\Views\View;
 use Dotenv\Dotenv;
 use Illuminate\Container\Container;
@@ -44,7 +46,8 @@ class App
     $this->initDb($this->config->db);
 
 
-    $this->container->bind(EmailValidationService::class, fn () => new EmailValidationService($this->config->apiKeys['emailable']));
+    // $this->container->bind(EmailValidationInterface::class, fn () => new EmailValidationService($this->config->apiKeys['emailable']));
+    $this->container->bind(EmailValidationInterface::class, fn () => new EmailValidationService($this->config->apiKeys['abstract_api_email_validation']));
     return $this;
   }
 
