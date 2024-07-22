@@ -2,9 +2,14 @@
 
 declare(strict_types=1);
 
-use App\Services\Shipping\BillableWeightCalculatorService;
-
 require __DIR__ . '/../../../vendor/autoload.php';
+
+use App\Services\Shipping\BillableWeightCalculatorService;
+use App\Services\Shipping\DimDivisor;
+use App\Services\Shipping\PackageDimension;
+use App\Services\Shipping\Weight;
+
+
 
 $package = [
   'weight' => 6,
@@ -16,14 +21,19 @@ $package = [
 ];
 
 
-$fedexDimDivisor = 139;
 
-$billableWeight = (new BillableWeightCalculatorService())->calculate(
+$packageDimensions = new PackageDimension(
   $package['dimensions']['width'],
   $package['dimensions']['height'],
   $package['dimensions']['length'],
-  $package['weight'],
-  $fedexDimDivisor
+
+
+);
+
+$billableWeight = (new BillableWeightCalculatorService())->calculate(
+  $packageDimensions,
+  new Weight($package['weight']),
+  DimDivisor::FEDEX
 );
 
 
