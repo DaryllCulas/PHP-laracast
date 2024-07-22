@@ -30,11 +30,24 @@ $packageDimensions = new PackageDimension(
 
 );
 
-$billableWeight = (new BillableWeightCalculatorService())->calculate(
+
+$weight = new Weight($package['weight']);
+$widerPackageDimensions = $packageDimensions->increaseWidth(10);
+$billableWeightService = new BillableWeightCalculatorService();
+
+$billableWeight = $billableWeightService->calculate(
   $packageDimensions,
-  new Weight($package['weight']),
+  $weight,
   DimDivisor::FEDEX
 );
 
+$widerPackageBillableWeight = $billableWeightService->calculate(
+  $widerPackageDimensions,
+  $weight,
+  DimDivisor::FEDEX
+);
 
 echo $billableWeight . ' lb' . PHP_EOL;
+
+
+echo $widerPackageBillableWeight . ' lb' . PHP_EOL;
